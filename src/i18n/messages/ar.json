@@ -79,8 +79,8 @@
     "auditLog": "سجل التدقيق",
     "shutdown": "إيقاف التشغيل",
     "restart": "إعادة التشغيل",
-    "shutdownConfirm": "هل تريد إيقاف OmniRoute؟",
-    "restartConfirm": "هل تريد إعادة تشغيل OmniRoute؟",
+    "shutdownConfirm": "هل تريد إيقاف Zed API؟",
+    "restartConfirm": "هل تريد إعادة تشغيل Zed API؟",
     "version": "v{version}",
     "debug": "تصحيح",
     "system": "النظام",
@@ -128,7 +128,7 @@
     "cliTools": "أدوات سطر الأوامر",
     "cliToolsDescription": "تكوين أدوات CLI",
     "home": "الصفحة الرئيسية",
-    "homeDescription": "مرحبًا بك في OmniRoute",
+    "homeDescription": "مرحبًا بك في Zed API",
     "endpoint": "Endpoints",
     "endpointDescription": "Manage proxy endpoints, MCP, A2A, and API endpoints",
     "settings": "الإعدادات",
@@ -138,7 +138,11 @@
     "media": "الإعلام",
     "mediaDescription": "إنشاء الصور ومقاطع الفيديو والموسيقى",
     "themes": "المواضيع",
-    "themesDescription": "اختر سمة لون للوحة المعلومات بأكملها"
+    "themesDescription": "اختر سمة لون للوحة المعلومات بأكملها",
+    "mcp": "MCP",
+    "mcpDescription": "Model Context Protocol server management and tools",
+    "a2a": "A2A",
+    "a2aDescription": "Agent-to-Agent protocol tasks and observability"
   },
   "home": {
     "quickStart": "بداية سريعة",
@@ -370,8 +374,8 @@
     "mappingsSaved": "تم حفظ التعيينات!",
     "failedSaveMappings": "فشل حفظ التعيينات",
     "howItWorks": "كيف يعمل:",
-    "antigravityHowWorksDesc": "تقوم Antigravity بإرسال الطلبات إلى نقطة نهاية Google. يقوم MITM باعتراضهم وإعادة توجيههم إلى OmniRoute.",
-    "antigravityStep1": "1. ابدأ تشغيل MITM لتوجيه الطلبات عبر OmniRoute.",
+    "antigravityHowWorksDesc": "تقوم Antigravity بإرسال الطلبات إلى نقطة نهاية Google. يقوم MITM باعتراضهم وإعادة توجيههم إلى Zed API.",
+    "antigravityStep1": "1. ابدأ تشغيل MITM لتوجيه الطلبات عبر Zed API.",
     "antigravityStep2Prefix": "2. أضف",
     "antigravityStep2Suffix": "إلى ملف المضيفين الخاص بك كـ 127.0.0.1.",
     "antigravityStep3": "3. سيتم فتح Antigravity والطلبات بالوكالة.",
@@ -417,7 +421,7 @@
     "applied": "تم التطبيق!",
     "failed": "فشل",
     "resetDone": "إعادة تعيين!",
-    "omnirouteConfiguredOpenAiCompatible": "تم تكوين OmniRoute كموفر متوافق مع OpenAI",
+    "omnirouteConfiguredOpenAiCompatible": "تم تكوين Zed API كموفر متوافق مع OpenAI",
     "provider": "مزود",
     "model": "نموذج",
     "providers": "مقدمي الخدمات",
@@ -456,7 +460,9 @@
       "cline": "Cline AI Coding Assistant CLI",
       "kilo": "كيلو كود AI مساعد CLI",
       "cursor": "محرر كود المؤشر AI",
-      "continue": "تابع مساعد الذكاء الاصطناعي"
+      "continue": "تابع مساعد الذكاء الاصطناعي",
+      "opencode": "OpenCode AI coding agent (Terminal)",
+      "kiro": "Amazon Kiro — AI-powered IDE"
     },
     "guides": {
       "cursor": {
@@ -503,6 +509,42 @@
           "4": {
             "title": "إضافة تكوين النموذج",
             "desc": "أضف التكوين التالي إلى مجموعة النماذج الخاصة بك:"
+          }
+        }
+      },
+      "opencode": {
+        "steps": {
+          "1": {
+            "title": "Install OpenCode",
+            "desc": "Install via npm: npm install -g opencode-ai"
+          },
+          "2": {
+            "title": "API Key"
+          },
+          "3": {
+            "title": "Set Base URL",
+            "desc": "opencode config set baseUrl {{baseUrl}}"
+          },
+          "4": {
+            "title": "Select Model"
+          }
+        }
+      },
+      "kiro": {
+        "steps": {
+          "1": {
+            "title": "Open Kiro Settings",
+            "desc": "Go to Settings → AI Provider"
+          },
+          "2": {
+            "title": "Base URL",
+            "desc": "Paste your Zed API endpoint URL"
+          },
+          "3": {
+            "title": "API Key"
+          },
+          "4": {
+            "title": "Select Model"
           }
         }
       }
@@ -562,6 +604,8 @@
     "randomDesc": "اختيار عشوائي موحد، ثم الرجوع إلى النماذج المتبقية",
     "leastUsedDesc": "يختار النموذج الذي يحتوي على أقل عدد من الطلبات، مع موازنة الحمل مع مرور الوقت",
     "costOptimizedDesc": "الطرق إلى النموذج الأرخص تعتمد أولاً على التسعير",
+    "strictRandom": "Strict Random",
+    "strictRandomDesc": "Shuffle deck — uses each model once before reshuffling",
     "models": "نماذج",
     "autoBalance": "التوازن التلقائي",
     "advancedSettings": "الإعدادات المتقدمة",
@@ -704,7 +748,9 @@
         "tip2": "Keep a quality fallback for hard prompts.",
         "tip3": "Use for batch/background jobs where cost is the main KPI."
       }
-    }
+    },
+    "templateFreeStack": "Free Stack ($0)",
+    "templateFreeStackDesc": "Round-robin across all free providers: Kiro (Claude), iFlow (5 models), Qwen (4 models), Gemini CLI. Zero cost, never stops coding."
   },
   "costs": {
     "title": "التكاليف",
@@ -747,7 +793,7 @@
     "moderationsDesc": "الإشراف على المحتوى وتصنيف السلامة",
     "responsesDesc": "واجهة Responses من OpenAI لـ Codex وسير العمل الوكيلية المتقدمة",
     "listModelsDesc": "قائمة جميع النماذج المتاحة عبر جميع المزودين المتصلين",
-    "settingsApiDesc": "قراءة وتعديل إعدادات OmniRoute عبر API",
+    "settingsApiDesc": "قراءة وتعديل إعدادات Zed API عبر API",
     "settingsApi": "Settings API",
     "categoryCore": "واجهات API الأساسية",
     "categoryMedia": "الوسائط والمتعدد الوسائط",
@@ -816,7 +862,9 @@
     "a2aQuickStartTitle": "البدء السريع",
     "a2aQuickStartStep1": "اكتشف بطاقة الوكيل على `/.well-known/agent.json`.",
     "a2aQuickStartStep2": "إرسال طلبات JSON - RPC إلى@@ PH0 @@ باستخدام @@PH1 @@ أو `message/stream`.",
-    "a2aQuickStartStep3": "تتبع المهام والتحكم فيها باستخدام `tasks/get` و `tasks/cancel`."
+    "a2aQuickStartStep3": "تتبع المهام والتحكم فيها باستخدام `tasks/get` و `tasks/cancel`.",
+    "completionsLegacy": "Completions (Legacy)",
+    "completionsLegacyDesc": "Legacy OpenAI text completions — accepts both prompt string and messages array format"
   },
   "mcpDashboard": {
     "loading": "جارٍ تحميل لوحة تحكم MCP...",
@@ -942,7 +990,7 @@
   },
   "health": {
     "title": "صحة النظام",
-    "description": "المراقبة في الوقت الحقيقي لمثيل OmniRoute الخاص بك",
+    "description": "المراقبة في الوقت الحقيقي لمثيل Zed API الخاص بك",
     "healthy": "صحي",
     "degraded": "متدهورة",
     "down": "أسفل",
@@ -1065,7 +1113,7 @@
     "passwordsMismatch": "كلمات المرور غير متطابقة",
     "setupComplete": "اكتمل الإعداد!",
     "goToDashboard": "انتقل إلى لوحة المعلومات →",
-    "welcomeDesc": "OmniRoute هو وكيل AI API المحلي الخاص بك. يقوم بتوجيه الطلبات إلى العديد من موفري الذكاء الاصطناعي مع موازنة التحميل وتجاوز الفشل وتتبع الاستخدام.",
+    "welcomeDesc": "Zed API هو وكيل AI API المحلي الخاص بك. يقوم بتوجيه الطلبات إلى العديد من موفري الذكاء الاصطناعي مع موازنة التحميل وتجاوز الفشل وتتبع الاستخدام.",
     "multiProvider": "متعدد الموفر",
     "usageTracking": "تتبع الاستخدام",
     "apiKeyMgmt": "إدارة مفتاح واجهة برمجة التطبيقات (API)",
@@ -1080,7 +1128,7 @@
     "noProviderFound": "لم يتم العثور على مزود. يمكنك إضافة واحدة من لوحة التحكم لاحقًا.",
     "testFailed": "فشل الاختبار، ولكن يمكنك تكوين ذلك لاحقًا.",
     "couldNotTest": "لا يمكن الاختبار الآن. يمكنك الاختبار من لوحة القيادة.",
-    "doneDesc": "أنت جاهز تمامًا! تم تكوين مثيل OmniRoute الخاص بك وأصبح جاهزًا لتوكيل طلبات الذكاء الاصطناعي.",
+    "doneDesc": "أنت جاهز تمامًا! تم تكوين مثيل Zed API الخاص بك وأصبح جاهزًا لتوكيل طلبات الذكاء الاصطناعي.",
     "yourEndpoint": "نقطة النهاية الخاصة بك:",
     "continue": "متابعة",
     "retry": "أعد المحاولة",
@@ -1332,13 +1380,23 @@
     "email": "البريد الإلكتروني",
     "healthCheckMinutes": "فحص الصحة (دقيقة)",
     "healthCheckHint": "الفاصل الزمني لتحديث الرمز المميز. 0 = معطل.",
+    "groupLabel": "Environment",
+    "groupPlaceholder": "e.g. eKaizen, Personal",
     "failedTestConnection": "فشل في اختبار الاتصال",
     "failed": "فشل",
     "leaveBlankKeepCurrentApiKey": "اتركه فارغًا للاحتفاظ بمفتاح API الحالي.",
     "editCompatibleTitle": "تحرير {type} متوافق",
-    "compatibleBaseUrlHint": "استخدم عنوان URL الأساسي (الذي ينتهي بـ /v1) لواجهة برمجة التطبيقات المتوافقة مع {type}.",
+    "compatibleBaseUrlHint": "Root URL of your {type}-compatible API. Use Advanced Settings for custom endpoint paths.",
     "apiKeyForCheck": "مفتاح API (للفحص)",
-    "compatibleProdPlaceholder": "{type} متوافق (المنتج)"
+    "compatibleProdPlaceholder": "{type} متوافق (المنتج)",
+    "providerTestTimeout": "Provider test timed out — too many connections to test at once",
+    "advancedSettings": "Advanced Settings",
+    "chatPathLabel": "Chat Endpoint Path",
+    "chatPathPlaceholder": "/chat/completions",
+    "chatPathHint": "Custom chat path for providers with non-standard APIs (e.g. /v4/chat/completions)",
+    "modelsPathLabel": "Models Endpoint Path",
+    "modelsPathPlaceholder": "/models",
+    "modelsPathHint": "Custom models path for validation (e.g. /v4/models)"
   },
   "settings": {
     "title": "الإعدادات",
@@ -1496,6 +1554,8 @@
     "leastUsedDesc": "اختر الحساب الأقل استخدامًا مؤخرًا",
     "costOpt": "خيار التكلفة",
     "costOptDesc": "تفضل أرخص حساب متاح",
+    "strictRandom": "Strict Random",
+    "strictRandomDesc": "Shuffle deck — uses each account once before reshuffling",
     "stickyLimit": "الحد اللزج",
     "stickyLimitDesc": "المكالمات لكل حساب قبل التبديل",
     "modelAliases": "الأسماء المستعارة النموذجية",
@@ -1734,11 +1794,16 @@
     "customPricingNote": "يمكنك تجاوز التسعير الافتراضي لنماذج محددة. تحظى التجاوزات المخصصة بالأولوية على الأسعار التي يتم اكتشافها تلقائيًا.",
     "editPricing": "تحرير التسعير",
     "viewFullDetails": "عرض التفاصيل الكاملة",
-    "themeCoral": "مرجاني"
+    "themeCoral": "مرجاني",
+    "cliFingerprint": "CLI Fingerprint Matching",
+    "cliFingerprintDesc": "Match native CLI binary signatures when proxying requests. Reorders headers and body fields to look identical to the official CLI tools. Your proxy IP is preserved.",
+    "cliFingerprintEnabled": "{count} provider(s) with CLI fingerprint active",
+    "enableFingerprintTitle": "Enable fingerprint for {provider}",
+    "disableFingerprintTitle": "Disable fingerprint for {provider}"
   },
   "translator": {
     "title": "مترجم",
-    "metaTitle": "ملعب المترجم | OmniRoute",
+    "metaTitle": "ملعب المترجم | Zed API",
     "metaDescription": "تصحيح واختبار وتصور ترجمات تنسيق واجهة برمجة التطبيقات (API) بين مقدمي الخدمة",
     "playgroundTitle": "ملعب المترجم",
     "playground": "ملعب",
@@ -1746,11 +1811,11 @@
     "chatTester": "اختبار الدردشة",
     "testBench": "مقعد الاختبار",
     "liveMonitor": "مراقب مباشر",
-    "modeDescriptionPlayground": "الصق أي نص طلب واجهة برمجة التطبيقات (API) وشاهد كيف يقوم OmniRoute بترجمته بين تنسيقات الموفر (OpenAI ↔ Claude ↔ Gemini ↔ Responses API)",
-    "modeDescriptionChatTester": "أرسل طلبات دردشة حقيقية من خلال OmniRoute وافحص الرحلة الكاملة ذهابًا وإيابًا: الإدخال، والطلب المترجم، واستجابة الموفر، والمخرجات المترجمة.",
+    "modeDescriptionPlayground": "الصق أي نص طلب واجهة برمجة التطبيقات (API) وشاهد كيف يقوم Zed API بترجمته بين تنسيقات الموفر (OpenAI ↔ Claude ↔ Gemini ↔ Responses API)",
+    "modeDescriptionChatTester": "أرسل طلبات دردشة حقيقية من خلال Zed API وافحص الرحلة الكاملة ذهابًا وإيابًا: الإدخال، والطلب المترجم، واستجابة الموفر، والمخرجات المترجمة.",
     "modeDescriptionTestBench": "قم بتشغيل السيناريوهات المحددة مسبقًا وقارن التوافق عبر الموفرين والنماذج.",
-    "modeDescriptionLiveMonitor": "شاهد أحداث الترجمة في الوقت الفعلي أثناء تدفق الطلبات عبر OmniRoute.",
-    "modeDescriptionFallback": "تصحيح الأخطاء واختبارها وتصور كيفية قيام OmniRoute بترجمة طلبات واجهة برمجة التطبيقات (API) بين مقدمي الخدمة.",
+    "modeDescriptionLiveMonitor": "شاهد أحداث الترجمة في الوقت الفعلي أثناء تدفق الطلبات عبر Zed API.",
+    "modeDescriptionFallback": "تصحيح الأخطاء واختبارها وتصور كيفية قيام Zed API بترجمة طلبات واجهة برمجة التطبيقات (API) بين مقدمي الخدمة.",
     "recentTranslations": "الترجمات الأخيرة",
     "noTranslations": "لا توجد ترجمات بعد",
     "source": "المصدر",
@@ -1767,7 +1832,7 @@
     "notAvailableSymbol": "—",
     "liveAutoRefreshing": "مباشر - التحديث التلقائي",
     "paused": "متوقف مؤقتًا",
-    "eventsAppearHint": "تظهر أحداث الترجمة هنا أثناء تدفق الطلبات عبر OmniRoute. استخدم أيًا من هذه الطرق لإنشاء الأحداث:",
+    "eventsAppearHint": "تظهر أحداث الترجمة هنا أثناء تدفق الطلبات عبر Zed API. استخدم أيًا من هذه الطرق لإنشاء الأحداث:",
     "chatTesterTab": "علامة تبويب اختبار الدردشة",
     "testBenchTab": "علامة التبويب اختبار البدلاء",
     "externalApiCalls": "مكالمات API الخارجية",
@@ -1776,7 +1841,7 @@
     "ok": "حسنًا",
     "errorShort": "خطأ",
     "formatConverter": "محول التنسيق",
-    "formatConverterDescription": "الصق أو اكتب نص طلب JSON. سيقوم المترجم بالكشف التلقائي عن التنسيق المصدر وتحويله إلى التنسيق الهدف. استخدم هذا لتصحيح كيفية ترجمة OmniRoute للطلبات بين التنسيقات (OpenAI ↔ Claude ↔ Gemini ↔ Responses API).",
+    "formatConverterDescription": "الصق أو اكتب نص طلب JSON. سيقوم المترجم بالكشف التلقائي عن التنسيق المصدر وتحويله إلى التنسيق الهدف. استخدم هذا لتصحيح كيفية ترجمة Zed API للطلبات بين التنسيقات (OpenAI ↔ Claude ↔ Gemini ↔ Responses API).",
     "input": "الإدخال",
     "output": "الإخراج",
     "auto": "تلقائي",
@@ -1872,7 +1937,7 @@
     "clientRequest": "طلب العميل",
     "clientRequestDescription": "نص الطلب كما سيرسله عميلك",
     "formatDetected": "تم الكشف عن التنسيق",
-    "formatDetectedDescription": "يقوم OmniRoute بالكشف التلقائي عن تنسيق واجهة برمجة التطبيقات (API) من بنية الطلب",
+    "formatDetectedDescription": "يقوم Zed API بالكشف التلقائي عن تنسيق واجهة برمجة التطبيقات (API) من بنية الطلب",
     "openaiIntermediate": "OpenAI المتوسطة",
     "openaiIntermediateDescription": "يتم أولاً تطبيع جميع التنسيقات إلى تنسيق OpenAI (الجسر العالمي)",
     "providerFormat": "تنسيق الموفر",
@@ -1885,7 +1950,7 @@
     "errorMessage": "خطأ: {message}",
     "requestFailed": "فشل الطلب",
     "noTextExtracted": "(لم يتم استخراج النص)",
-    "liveMonitorDescriptionPrefix": "يعرض أحداث الترجمة أثناء تدفق مكالمات API عبر OmniRoute. تأتي الأحداث من المخزن المؤقت في الذاكرة (يتم إعادة التعيين عند إعادة التشغيل). استخدم",
+    "liveMonitorDescriptionPrefix": "يعرض أحداث الترجمة أثناء تدفق مكالمات API عبر Zed API. تأتي الأحداث من المخزن المؤقت في الذاكرة (يتم إعادة التعيين عند إعادة التشغيل). استخدم",
     "liveMonitorDescriptionSuffix": "أو مكالمات API الخارجية لإنشاء الأحداث."
   },
   "usage": {
@@ -1934,7 +1999,7 @@
     "define": "تحديد",
     "defineStepDescription": "أنشئ حالات اختبار باستخدام مطالبات الإدخال ومعايير الإخراج المتوقعة باستخدام إستراتيجيات مثل الاحتواء أو التعبير العادي أو المطابقة التامة.",
     "run": "تشغيل",
-    "runStepDescription": "قم بتنفيذ حالات الاختبار على نقاط نهاية LLM الخاصة بك من خلال OmniRoute. يتم إرسال كل حالة كطلب API حقيقي.",
+    "runStepDescription": "قم بتنفيذ حالات الاختبار على نقاط نهاية LLM الخاصة بك من خلال Zed API. يتم إرسال كل حالة كطلب API حقيقي.",
     "evaluate": "تقييم",
     "evaluateStepDescription": "تتم مقارنة الاستجابات بالمعايير المتوقعة. راجع النجاح/الفشل لكل حالة باستخدام مقاييس زمن الاستجابة والتعليقات التفصيلية.",
     "evalSuites": "أجنحة التقييم",
@@ -1971,14 +2036,14 @@
     "noResultsYet": "لا توجد نتائج حتى الآن",
     "testCasesCount": "حالات الاختبار ({count})",
     "noTestCasesDefined": "لم يتم تحديد حالات الاختبار",
-    "runEvalHint": "انقر فوق \"Run Eval\" لتنفيذ جميع الحالات ضد نقطة نهاية LLM الخاصة بك. يرسل كل اختبار طلبًا حقيقيًا عبر OmniRoute.",
+    "runEvalHint": "انقر فوق \"Run Eval\" لتنفيذ جميع الحالات ضد نقطة نهاية LLM الخاصة بك. يرسل كل اختبار طلبًا حقيقيًا عبر Zed API.",
     "notifyNoTestCases": "لم يتم تحديد حالات اختبار لهذه المجموعة",
     "notifyAllCasesPassed": "تم اجتياز جميع حالات {total} ✅",
     "notifySomeCasesFailed": "تم اجتياز {passed}/{total}، وفشل {failed}",
     "notifyEvalRunFailed": "فشل تشغيل التقييم",
     "notifyEvalTitle": "التقييم: {name}",
     "modelEvals": "التقييمات النموذجية",
-    "evalsHeroDescription": "قم باختبار نقاط نهاية LLM الخاصة بك والتحقق من صحتها عن طريق تشغيل مجموعات التقييم المحددة مسبقًا. تحتوي كل مجموعة على حالات اختبار ترسل مطالبات حقيقية من خلال OmniRoute وتقارن الاستجابات بالمعايير المتوقعة - مما يساعدك على اكتشاف التراجعات ومقارنة النماذج وضمان جودة الاستجابة عبر مقدمي الخدمة.",
+    "evalsHeroDescription": "قم باختبار نقاط نهاية LLM الخاصة بك والتحقق من صحتها عن طريق تشغيل مجموعات التقييم المحددة مسبقًا. تحتوي كل مجموعة على حالات اختبار ترسل مطالبات حقيقية من خلال Zed API وتقارن الاستجابات بالمعايير المتوقعة - مما يساعدك على اكتشاف التراجعات ومقارنة النماذج وضمان جودة الاستجابة عبر مقدمي الخدمة.",
     "qualityValidation": "التحقق من الجودة",
     "modelComparison": "مقارنة النماذج",
     "regressionDetection": "كشف الانحدار",
@@ -2020,6 +2085,9 @@
     "rawPlanWithValue": "الخطة الأولية: {plan}",
     "noPlanFromProvider": "لا توجد خطة من المزود",
     "noQuotaData": "لا توجد بيانات الحصص",
+    "ungrouped": "Ungrouped",
+    "viewFlat": "Flat",
+    "viewByEnvironment": "By Environment",
     "noQuotaDataAvailable": "لا توجد بيانات الحصص المتاحة",
     "noAccountsForTierFilter": "لم يتم العثور على حسابات لمرشح الطبقة",
     "tierAll": "الكل",
@@ -2110,7 +2178,7 @@
     "loading": "جار التحميل...",
     "invalidPassword": "كلمة المرور غير صالحة",
     "errorOccurredRetry": "حدث خطأ. يرجى المحاولة مرة أخرى.",
-    "configureInstance": "دعنا نقوم بتكوين مثيل OmniRoute الخاص بك",
+    "configureInstance": "دعنا نقوم بتكوين مثيل Zed API الخاص بك",
     "runOnboardingWizard": "قم بتشغيل معالج الإعداد لإعداد كلمة المرور الخاصة بك وتوصيل أول مزود للذكاء الاصطناعي.",
     "startOnboarding": "ابدأ الإعداد",
     "secureYourInstance": "تأمين المثيل الخاص بك",
@@ -2130,14 +2198,14 @@
     "featureUsageTrackingDesc": "مراقبة التكاليف والرموز",
     "resetPassword": "إعادة تعيين كلمة المرور",
     "resetDescription": "اختر طريقة لاستعادة الوصول إلى لوحة المعلومات الخاصة بك",
-    "stopServer": "أوقف خادم OmniRoute",
+    "stopServer": "أوقف خادم Zed API",
     "processing": "جارٍ المعالجة...",
     "pleaseWait": "يرجى الانتظار حتى نكمل التفويض.",
     "authSuccess": "تم التفويض بنجاح!",
     "copyUrl": "انسخ عنوان URL هذا",
     "accessDenied": "تم رفض الوصول",
     "methodCliTitle": "الطريقة الأولى: إعادة تعيين CLI",
-    "methodCliDescription": "قم بتشغيل الأمر التالي على الخادم الذي يعمل عليه OmniRoute:",
+    "methodCliDescription": "قم بتشغيل الأمر التالي على الخادم الذي يعمل عليه Zed API:",
     "methodCliHint": "سيطالبك هذا بتعيين كلمة مرور جديدة. يجب إيقاف الخادم أولاً.",
     "methodManualTitle": "الطريقة الثانية: إعادة الضبط اليدوي",
     "methodManualDescription": "احذف كلمة المرور من قاعدة البيانات وقم بتعيين كلمة مرور جديدة عند بدء التشغيل:",
@@ -2151,7 +2219,7 @@
     "forgotPassword": "هل نسيت كلمة المرور؟"
   },
   "landing": {
-    "brandName": "OmniRoute",
+    "brandName": "Zed API",
     "navigateHome": "انتقل إلى المنزل",
     "toggleMenu": "تبديل القائمة",
     "featuresLink": "الميزات",
@@ -2181,17 +2249,17 @@
     "featureCliSupportDesc": "يعمل مع Claude Code وCodex وCline وCursor والمزيد.",
     "featureDashboardTitle": "لوحة القيادة",
     "featureDashboardDesc": "لوحة تحكم مرئية لتحليل حركة المرور في الوقت الحقيقي.",
-    "howItWorks": "كيف يعمل OmniRoute",
+    "howItWorks": "كيف يعمل Zed API",
     "howItWorksDescription": "تتدفق البيانات بسلاسة من تطبيقك عبر طبقة التوجيه الذكية الخاصة بنا إلى أفضل مزود لهذه المهمة.",
     "howItWorksStep1Title": "1. واجهة سطر الأوامر (CLI) ومجموعات SDK",
     "howItWorksStep1Description": "تبدأ طلباتك من أدواتك المفضلة أو SDK الموحد الخاص بنا. فقط قم بتغيير عنوان URL الأساسي.",
-    "howItWorksStep2Title": "2. مركز OmniRoute",
+    "howItWorksStep2Title": "2. مركز Zed API",
     "howItWorksStep2Description": "يقوم محركنا بتحليل الموجه، والتحقق من صحة مقدم الخدمة، والمسارات للحصول على أقل زمن وصول أو تكلفة.",
     "howItWorksStep3Title": "3. مقدمو الذكاء الاصطناعي",
     "howItWorksStep3Description": "يتم تنفيذ الطلب بواسطة OpenAI أو Anthropic أو Gemini أو غيرهم على الفور.",
     "getStartedIn30Seconds": "ابدأ في 30 ثانية",
-    "getStartedDescription": "قم بتثبيت OmniRoute، وقم بتكوين موفري الخدمة عبر لوحة تحكم الويب، وابدأ في توجيه طلبات الذكاء الاصطناعي.",
-    "installOmniRoute": "قم بتثبيت OmniRoute",
+    "getStartedDescription": "قم بتثبيت Zed API، وقم بتكوين موفري الخدمة عبر لوحة تحكم الويب، وابدأ في توجيه طلبات الذكاء الاصطناعي.",
+    "installZed API": "قم بتثبيت Zed API",
     "installStepDescription": "قم بتشغيل الأمر npx لبدء الخادم على الفور",
     "openDashboard": "افتح لوحة المعلومات",
     "openDashboardStepDescription": "تكوين مقدمي الخدمات ومفاتيح API عبر واجهة الويب",
@@ -2200,7 +2268,7 @@
     "terminal": "محطة",
     "copy": "نسخ",
     "copied": "✓ منقول",
-    "startingOmniRoute": "بدء تشغيل OmniRoute...",
+    "startingZed API": "بدء تشغيل Zed API...",
     "serverRunningOnLabel": "الخادم قيد التشغيل",
     "dashboardLabel": "لوحة القيادة",
     "readyToRoute": "جاهز للتوجيه! ✓",
@@ -2228,7 +2296,7 @@
     "flowProviderGithubCopilot": "جيثب مساعد الطيار",
     "interactiveDiagram": "رسم تخطيطي تفاعلي مرئي على سطح المكتب",
     "ctaTitle": "هل أنت مستعد لتبسيط البنية الأساسية للذكاء الاصطناعي لديك؟",
-    "ctaDescription": "انضم إلى المطورين الذين يقومون بتبسيط عمليات تكامل الذكاء الاصطناعي الخاصة بهم مع OmniRoute. مفتوح المصدر ومجاني للبدء.",
+    "ctaDescription": "انضم إلى المطورين الذين يقومون بتبسيط عمليات تكامل الذكاء الاصطناعي الخاصة بهم مع Zed API. مفتوح المصدر ومجاني للبدء.",
     "startFree": "ابدأ مجانًا",
     "readDocumentation": "قراءة الوثائق"
   },
@@ -2314,9 +2382,9 @@
     "clientClaudeBullet1Middle": "(كلود) أو",
     "clientClaudeBullet1Suffix": "(مضاد الجاذبية) البادئة.",
     "protocolsTitle": "البروتوكولات: MCP & A2A",
-    "protocolsDescription": "تعرض OmniRoute بروتوكولين تشغيليين بالإضافة إلى واجهات برمجة التطبيقات المتوافقة مع OpenAI: MCP لتنفيذ الأداة و A2A لسير العمل من وكيل إلى وكيل.",
+    "protocolsDescription": "تعرض Zed API بروتوكولين تشغيليين بالإضافة إلى واجهات برمجة التطبيقات المتوافقة مع OpenAI: MCP لتنفيذ الأداة و A2A لسير العمل من وكيل إلى وكيل.",
     "protocolMcpTitle": "MCP (بروتوكول السياق النموذجي)",
-    "protocolMcpDesc": "استخدم MCP عبر stdio للسماح للعملاء باكتشاف أدوات OmniRoute والاتصال بها مع رؤية التدقيق.",
+    "protocolMcpDesc": "استخدم MCP عبر stdio للسماح للعملاء باكتشاف أدوات Zed API والاتصال بها مع رؤية التدقيق.",
     "protocolMcpStep1": "ابدأ نقل MCP باستخدام `omniroute --mcp`.",
     "protocolMcpStep2": "قم بتوجيه عميل MCP الخاص بك إلى STDIO TRANSPORT.",
     "protocolMcpStep3": "اتصل بـ `omniroute_get_health` و `omniroute_list_combos` للتحقق من الاتصال.",
@@ -2359,10 +2427,10 @@
     "clearHistory": "مسح سجل الاستخدام في أي وقت",
     "configureRetention": "تكوين سياسات الاحتفاظ بالسجل",
     "backupRestore": "النسخ الاحتياطي واستعادة قاعدة البيانات الخاصة بك",
-    "privacyMetadataTitle": "سياسة الخصوصية | OmniRoute",
-    "privacyMetadataDescription": "سياسة الخصوصية لجهاز التوجيه الوكيل OmniRoute AI API.",
-    "termsMetadataTitle": "شروط الخدمة | OmniRoute",
-    "termsMetadataDescription": "شروط الخدمة لجهاز التوجيه الوكيل OmniRoute AI API.",
+    "privacyMetadataTitle": "سياسة الخصوصية | Zed API",
+    "privacyMetadataDescription": "سياسة الخصوصية لجهاز التوجيه الوكيل Zed API AI API.",
+    "termsMetadataTitle": "شروط الخدمة | Zed API",
+    "termsMetadataDescription": "شروط الخدمة لجهاز التوجيه الوكيل Zed API AI API.",
     "backToHome": "العودة إلى المنزل",
     "lastUpdated": "آخر تحديث: {date}",
     "policyLastUpdatedDate": "13 فبراير 2026",
@@ -2370,7 +2438,7 @@
     "questionsVisit": "أسئلة؟ قم بزيارة موقعنا",
     "githubRepository": "مستودع جيثب",
     "privacySection1Title": "1. العمارة المحلية الأولى",
-    "privacySection1Text": "تم تصميم OmniRoute كتطبيق محلي أولاً. تتم جميع عمليات معالجة البيانات وتخزينها بالكامل على جهازك. لا يوجد خادم مركزي يجمع معلوماتك.",
+    "privacySection1Text": "تم تصميم Zed API كتطبيق محلي أولاً. تتم جميع عمليات معالجة البيانات وتخزينها بالكامل على جهازك. لا يوجد خادم مركزي يجمع معلوماتك.",
     "privacySection2Title": "2. البيانات التي نقوم بتخزينها",
     "privacyDataStoredIn": "يتم تخزين البيانات التالية محليًا في",
     "privacyDataProviderConfigurationsDesc": "عناوين URL للاتصال وأنواع الموفرين وإعدادات الأولوية",
@@ -2378,9 +2446,9 @@
     "privacyDataUsageLogsDesc": "عدد الطلبات واستخدام الرمز المميز وأسماء النماذج والطوابع الزمنية وأوقات الاستجابة",
     "privacyDataApplicationSettingsDesc": "تفضيلات السمة، وإستراتيجية التوجيه، وتكوينات التحرير والسرد",
     "privacySection3Title": "3. لا يوجد قياس عن بعد",
-    "privacySection3Text": "لا يقوم OmniRoute بجمع بيانات القياس عن بعد أو التحليلات أو تقارير الأعطال. لا يتم إرسال أي بيانات إلينا أو إلى أي طرف ثالث. تظل أنماط الاستخدام واستدعاءات API والتكوينات خاصة تمامًا.",
+    "privacySection3Text": "لا يقوم Zed API بجمع بيانات القياس عن بعد أو التحليلات أو تقارير الأعطال. لا يتم إرسال أي بيانات إلينا أو إلى أي طرف ثالث. تظل أنماط الاستخدام واستدعاءات API والتكوينات خاصة تمامًا.",
     "privacySection4Title": "4. موفرو الذكاء الاصطناعي التابعون لجهات خارجية",
-    "privacySection4Text": "عند إجراء استدعاءات واجهة برمجة التطبيقات من خلال OmniRoute، تتم إعادة توجيه طلباتك إلى موفري الذكاء الاصطناعي الذين قمت بتكوينهم (على سبيل المثال: OpenAI، وAnthropic، وGoogle). لدى هؤلاء المزودين سياسات خصوصية خاصة بهم تحكم كيفية تعاملهم مع بياناتك. يرجى مراجعة:",
+    "privacySection4Text": "عند إجراء استدعاءات واجهة برمجة التطبيقات من خلال Zed API، تتم إعادة توجيه طلباتك إلى موفري الذكاء الاصطناعي الذين قمت بتكوينهم (على سبيل المثال: OpenAI، وAnthropic، وGoogle). لدى هؤلاء المزودين سياسات خصوصية خاصة بهم تحكم كيفية تعاملهم مع بياناتك. يرجى مراجعة:",
     "privacyOpenAiPolicy": "سياسة خصوصية OpenAI",
     "privacyAnthropicPolicy": "سياسة الخصوصية الإنسانية",
     "privacyGooglePolicy": "سياسة خصوصية جوجل",
@@ -2392,21 +2460,21 @@
     "privacySection7TextStart": "وبما أن جميع البيانات مخزنة محليًا، فلديك السيطرة الكاملة. يمكنك حذف بياناتك في أي وقت عن طريق إزالة",
     "privacySection7TextEnd": "الدليل أو استخدام ميزات النسخ الاحتياطي واستعادة قاعدة البيانات في لوحة المعلومات.",
     "termsSection1Title": "1. نظرة عامة",
-    "termsSection1Text": "OmniRoute هو أول جهاز توجيه وكيل محلي لواجهة برمجة التطبيقات (AI API) يعمل بالكامل على جهازك. يقوم بتوجيه الطلبات إلى العديد من موفري الذكاء الاصطناعي مع موازنة التحميل وتجاوز الفشل وتتبع الاستخدام.",
+    "termsSection1Text": "Zed API هو أول جهاز توجيه وكيل محلي لواجهة برمجة التطبيقات (AI API) يعمل بالكامل على جهازك. يقوم بتوجيه الطلبات إلى العديد من موفري الذكاء الاصطناعي مع موازنة التحميل وتجاوز الفشل وتتبع الاستخدام.",
     "termsSection2Title": "2. مسؤوليات المستخدم",
     "termsResponsibilityApiKeys": "أنت وحدك المسؤول عن إدارة مفاتيح واجهة برمجة التطبيقات وبيانات الاعتماد الخاصة بك لموفري الذكاء الاصطناعي التابعين لجهات خارجية (OpenAI وAnthropic وGoogle وما إلى ذلك).",
-    "termsResponsibilityCompliance": "يجب عليك الالتزام بشروط الخدمة الخاصة بكل مزود للذكاء الاصطناعي الذي يمكنك الوصول إلى واجهة برمجة التطبيقات (API) الخاصة به من خلال OmniRoute.",
-    "termsResponsibilitySecurity": "أنت مسؤول عن أمان تثبيت OmniRoute المحلي لديك، بما في ذلك تعيين كلمة مرور وتقييد الوصول إلى الشبكة.",
+    "termsResponsibilityCompliance": "يجب عليك الالتزام بشروط الخدمة الخاصة بكل مزود للذكاء الاصطناعي الذي يمكنك الوصول إلى واجهة برمجة التطبيقات (API) الخاصة به من خلال Zed API.",
+    "termsResponsibilitySecurity": "أنت مسؤول عن أمان تثبيت Zed API المحلي لديك، بما في ذلك تعيين كلمة مرور وتقييد الوصول إلى الشبكة.",
     "termsSection3Title": "3. كيف يعمل",
-    "termsSection3Text": "يعمل OmniRoute كوكيل وسيط. تتم ترجمة مكالمات API المرسلة إلى OmniRoute وإعادة توجيهها إلى موفري الذكاء الاصطناعي الذين تم تكوينهم. لا يقوم OmniRoute بتعديل محتوى طلباتك أو استجاباتك بما يتجاوز ترجمة البروتوكول الضرورية.",
+    "termsSection3Text": "يعمل Zed API كوكيل وسيط. تتم ترجمة مكالمات API المرسلة إلى Zed API وإعادة توجيهها إلى موفري الذكاء الاصطناعي الذين تم تكوينهم. لا يقوم Zed API بتعديل محتوى طلباتك أو استجاباتك بما يتجاوز ترجمة البروتوكول الضرورية.",
     "termsSection4Title": "4. التعامل مع البيانات",
     "termsDataStoredLocally": "يتم تخزين جميع البيانات محليًا على جهازك في قاعدة بيانات SQLite.",
-    "termsNoTransmission": "لا يقوم OmniRoute بنقل أي بيانات إلى خوادم خارجية إلا إذا قمت بتمكين ميزات المزامنة السحابية بشكل صريح.",
+    "termsNoTransmission": "لا يقوم Zed API بنقل أي بيانات إلى خوادم خارجية إلا إذا قمت بتمكين ميزات المزامنة السحابية بشكل صريح.",
     "termsDataLocationText": "يتم تخزين سجلات الاستخدام ومفاتيح API والتكوين في",
     "termsSection5Title": "5. إخلاء المسؤولية",
-    "termsSection5Text": "يتم توفير OmniRoute \"كما هو\" دون أي ضمان من أي نوع. نحن لسنا مسؤولين عن أي تكاليف يتم تكبدها من خلال استخدام واجهة برمجة التطبيقات (API)، أو انقطاع الخدمة، أو فقدان البيانات. احتفظ دائمًا بنسخ احتياطية من التكوين الخاص بك.",
+    "termsSection5Text": "يتم توفير Zed API \"كما هو\" دون أي ضمان من أي نوع. نحن لسنا مسؤولين عن أي تكاليف يتم تكبدها من خلال استخدام واجهة برمجة التطبيقات (API)، أو انقطاع الخدمة، أو فقدان البيانات. احتفظ دائمًا بنسخ احتياطية من التكوين الخاص بك.",
     "termsSection6Title": "6. المصدر المفتوح",
-    "termsSection6Text": "OmniRoute هو برنامج مفتوح المصدر. ولك الحرية في فحصه وتعديله وتوزيعه بموجب شروط ترخيصه."
+    "termsSection6Text": "Zed API هو برنامج مفتوح المصدر. ولك الحرية في فحصه وتعديله وتوزيعه بموجب شروط ترخيصه."
   },
   "endpoints": {
     "tabProxy": "Endpoint Proxy",
@@ -2419,5 +2487,45 @@
     "featureWebhooks": "تكوين Webhooks واشتراكات الأحداث",
     "featureSwagger": "إنشاء مواصفات OpenAPI / Swagger تلقائياً",
     "featureAuth": "إدارة مفاتيح API ونطاقات OAuth لكل نقطة نهاية"
+  },
+  "agents": {
+    "title": "CLI Agents",
+    "description": "Discover installed CLI agents on your system. Add custom agents for auto-detection.",
+    "refresh": "Refresh",
+    "installed": "Installed",
+    "notFound": "Not Found",
+    "builtIn": "Built-in",
+    "custom": "Custom",
+    "remove": "Remove",
+    "addCustomAgent": "Add Custom Agent",
+    "addCustomAgentDesc": "Register any CLI tool for detection. It will be scanned automatically on refresh.",
+    "agentName": "Agent Name",
+    "binaryName": "Binary Name",
+    "versionCommand": "Version Command",
+    "spawnArgs": "Spawn Args",
+    "addAgent": "Add Agent"
+  },
+  "autoCombo": {
+    "title": "Auto-Combo Engine",
+    "statusNormal": "Normal",
+    "statusIncident": "Incident Mode",
+    "modePack": "Mode Pack",
+    "providerScores": "Provider Scores",
+    "noAutoCombo": "No auto-combo configured.",
+    "excludedProviders": "Excluded Providers",
+    "noExclusions": "No providers currently excluded.",
+    "factorQuota": "Quota",
+    "factorHealth": "Health",
+    "factorCost": "Cost",
+    "factorLatency": "Latency",
+    "factorTaskFit": "Task Fit",
+    "factorStability": "Stability",
+    "factorTierPriority": "Tier Priority",
+    "factorTierPriorityDesc": "Prefers accounts with higher quota tiers (Ultra/Pro over Free)",
+    "scoreFactorBreakdown": "Scoring Factors",
+    "modePackShipFast": "Ship Fast",
+    "modePackCostSaver": "Cost Saver",
+    "modePackQualityFirst": "Quality First",
+    "modePackOfflineFriendly": "Offline Friendly"
   }
 }

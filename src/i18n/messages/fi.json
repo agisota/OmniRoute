@@ -79,8 +79,8 @@
     "auditLog": "Tarkastusloki",
     "shutdown": "Sammutus",
     "restart": "Käynnistä uudelleen",
-    "shutdownConfirm": "Suljetaanko OmniRoute?",
-    "restartConfirm": "Käynnistetäänkö OmniRoute uudelleen?",
+    "shutdownConfirm": "Suljetaanko Zed API?",
+    "restartConfirm": "Käynnistetäänkö Zed API uudelleen?",
     "version": "v{version}",
     "debug": "Debug",
     "system": "Järjestelmä",
@@ -128,7 +128,7 @@
     "cliTools": "CLI-työkalut",
     "cliToolsDescription": "Määritä CLI-työkalut",
     "home": "Kotiin",
-    "homeDescription": "Tervetuloa OmniRouteen",
+    "homeDescription": "Tervetuloa Zed APIen",
     "endpoint": "Endpoints",
     "endpointDescription": "Manage proxy endpoints, MCP, A2A, and API endpoints",
     "settings": "Asetukset",
@@ -138,7 +138,11 @@
     "media": "Media",
     "mediaDescription": "Luo kuvia, videoita ja musiikkia",
     "themes": "Teemat",
-    "themesDescription": "Valitse väriteema koko kojelautapaneelille"
+    "themesDescription": "Valitse väriteema koko kojelautapaneelille",
+    "mcp": "MCP",
+    "mcpDescription": "Model Context Protocol server management and tools",
+    "a2a": "A2A",
+    "a2aDescription": "Agent-to-Agent protocol tasks and observability"
   },
   "home": {
     "quickStart": "Pika-aloitus",
@@ -370,8 +374,8 @@
     "mappingsSaved": "Kartaukset tallennettu!",
     "failedSaveMappings": "Kartoitusten tallentaminen epäonnistui",
     "howItWorks": "Miten se toimii:",
-    "antigravityHowWorksDesc": "Antigravity lähettää pyyntöjä Googlen päätepisteeseen. MITM sieppaa ja ohjaa ne OmniRouteen.",
-    "antigravityStep1": "1. Käynnistä MITM reitittääksesi pyynnöt OmniRouten kautta.",
+    "antigravityHowWorksDesc": "Antigravity lähettää pyyntöjä Googlen päätepisteeseen. MITM sieppaa ja ohjaa ne Zed APIen.",
+    "antigravityStep1": "1. Käynnistä MITM reitittääksesi pyynnöt Zed APIn kautta.",
     "antigravityStep2Prefix": "2. Lisää",
     "antigravityStep2Suffix": "hosts-tiedostoon muodossa 127.0.0.1.",
     "antigravityStep3": "3. Avaa Antigravity ja pyynnöt välitetään.",
@@ -417,7 +421,7 @@
     "applied": "Sovellettu!",
     "failed": "Epäonnistui",
     "resetDone": "Nollaa!",
-    "omnirouteConfiguredOpenAiCompatible": "OmniRoute on määritetty OpenAI-yhteensopivaksi palveluntarjoajaksi",
+    "omnirouteConfiguredOpenAiCompatible": "Zed API on määritetty OpenAI-yhteensopivaksi palveluntarjoajaksi",
     "provider": "Palveluntarjoaja",
     "model": "Malli",
     "providers": "Palveluntarjoajat",
@@ -456,7 +460,9 @@
       "cline": "Cline AI Coding Assistant CLI",
       "kilo": "Kilo Code AI Assistant CLI",
       "cursor": "Cursor AI Code Editor",
-      "continue": "Jatka AI Assistantia"
+      "continue": "Jatka AI Assistantia",
+      "opencode": "OpenCode AI coding agent (Terminal)",
+      "kiro": "Amazon Kiro — AI-powered IDE"
     },
     "guides": {
       "cursor": {
@@ -503,6 +509,42 @@
           "4": {
             "title": "Lisää mallin kokoonpano",
             "desc": "Lisää seuraavat kokoonpanot mallien matriisiisi:"
+          }
+        }
+      },
+      "opencode": {
+        "steps": {
+          "1": {
+            "title": "Install OpenCode",
+            "desc": "Install via npm: npm install -g opencode-ai"
+          },
+          "2": {
+            "title": "API Key"
+          },
+          "3": {
+            "title": "Set Base URL",
+            "desc": "opencode config set baseUrl {{baseUrl}}"
+          },
+          "4": {
+            "title": "Select Model"
+          }
+        }
+      },
+      "kiro": {
+        "steps": {
+          "1": {
+            "title": "Open Kiro Settings",
+            "desc": "Go to Settings → AI Provider"
+          },
+          "2": {
+            "title": "Base URL",
+            "desc": "Paste your Zed API endpoint URL"
+          },
+          "3": {
+            "title": "API Key"
+          },
+          "4": {
+            "title": "Select Model"
           }
         }
       }
@@ -562,6 +604,8 @@
     "randomDesc": "Yhtenäinen satunnainen valinta, sitten takaisin muihin malleihin",
     "leastUsedDesc": "Valitsee mallin, jolla on vähiten pyyntöjä ja tasapainottaa kuormitusta ajan myötä",
     "costOptimizedDesc": "Reitit edullisimpaan malliin ensin hinnoittelun perusteella",
+    "strictRandom": "Strict Random",
+    "strictRandomDesc": "Shuffle deck — uses each model once before reshuffling",
     "models": "Mallit",
     "autoBalance": "Automaattinen tasapainotus",
     "advancedSettings": "Lisäasetukset",
@@ -704,7 +748,9 @@
         "tip2": "Keep a quality fallback for hard prompts.",
         "tip3": "Use for batch/background jobs where cost is the main KPI."
       }
-    }
+    },
+    "templateFreeStack": "Free Stack ($0)",
+    "templateFreeStackDesc": "Round-robin across all free providers: Kiro (Claude), iFlow (5 models), Qwen (4 models), Gemini CLI. Zero cost, never stops coding."
   },
   "costs": {
     "title": "Kustannukset",
@@ -747,7 +793,7 @@
     "moderationsDesc": "Sisällön moderointi ja turvallisuusluokitus",
     "responsesDesc": "OpenAI Responses API for Codex and advanced agentic workflows",
     "listModelsDesc": "List all available models across all connected providers",
-    "settingsApiDesc": "Read and modify OmniRoute configuration via API",
+    "settingsApiDesc": "Read and modify Zed API configuration via API",
     "settingsApi": "Settings API",
     "categoryCore": "Ydin-API:t",
     "categoryMedia": "Media & Monimuotoinen",
@@ -816,7 +862,9 @@
     "a2aQuickStartTitle": "A2A Pikaopas",
     "a2aQuickStartStep1": "Tutustu agenttikorttiin osoitteessa `/.well-known/agent.json`.",
     "a2aQuickStartStep2": "Lähetä JSON-RPC-pyynnöt osoitteeseen `POST /a2a` käyttämällä `message/send` tai `message/stream`.",
-    "a2aQuickStartStep3": "Seuraa ja ohjaa tehtäviä käyttämällä `tasks/get` ja `tasks/cancel`."
+    "a2aQuickStartStep3": "Seuraa ja ohjaa tehtäviä käyttämällä `tasks/get` ja `tasks/cancel`.",
+    "completionsLegacy": "Completions (Legacy)",
+    "completionsLegacyDesc": "Legacy OpenAI text completions — accepts both prompt string and messages array format"
   },
   "mcpDashboard": {
     "loading": "Ladataan MCP-hallintapaneelia...",
@@ -942,7 +990,7 @@
   },
   "health": {
     "title": "Järjestelmän terveys",
-    "description": "OmniRoute-instanssisi reaaliaikainen seuranta",
+    "description": "Zed API-instanssisi reaaliaikainen seuranta",
     "healthy": "Terve",
     "degraded": "Heikentynyt",
     "down": "Alas",
@@ -1065,7 +1113,7 @@
     "passwordsMismatch": "Salasanat eivät täsmää",
     "setupComplete": "Asennus valmis!",
     "goToDashboard": "Siirry kohtaan Dashboard →",
-    "welcomeDesc": "OmniRoute on paikallinen AI API -välityspalvelin. Se reitittää pyynnöt useille tekoälypalveluntarjoajille kuormituksen tasapainottamisen, vikasietoisuuden ja käytön seurannan avulla.",
+    "welcomeDesc": "Zed API on paikallinen AI API -välityspalvelin. Se reitittää pyynnöt useille tekoälypalveluntarjoajille kuormituksen tasapainottamisen, vikasietoisuuden ja käytön seurannan avulla.",
     "multiProvider": "Multi-Provider",
     "usageTracking": "Käytön seuranta",
     "apiKeyMgmt": "API-avainhallinta",
@@ -1080,7 +1128,7 @@
     "noProviderFound": "Palveluntarjoajaa ei löydy. Voit lisätä sellaisen hallintapaneelista myöhemmin.",
     "testFailed": "Testi epäonnistui, mutta voit määrittää tämän myöhemmin.",
     "couldNotTest": "Ei pystynyt testaamaan juuri nyt. Voit testata kojelaudalta.",
-    "doneDesc": "Kaikki on valmista! OmniRoute-esiintymäsi on määritetty ja valmis välittämään AI-pyyntöjä.",
+    "doneDesc": "Kaikki on valmista! Zed API-esiintymäsi on määritetty ja valmis välittämään AI-pyyntöjä.",
     "yourEndpoint": "Päätepisteesi:",
     "continue": "Jatka",
     "retry": "Yritä uudelleen",
@@ -1332,13 +1380,23 @@
     "email": "Sähköposti",
     "healthCheckMinutes": "Terveystarkastus (min)",
     "healthCheckHint": "Ennakoiva tunnuksen päivitysväli. 0 = pois käytöstä.",
+    "groupLabel": "Environment",
+    "groupPlaceholder": "e.g. eKaizen, Personal",
     "failedTestConnection": "Yhteyden testaus epäonnistui",
     "failed": "Epäonnistui",
     "leaveBlankKeepCurrentApiKey": "Jätä tyhjäksi, jos haluat säilyttää nykyisen API-avaimen.",
     "editCompatibleTitle": "Muokkaa {type} Yhteensopiva",
-    "compatibleBaseUrlHint": "Käytä perus-URL-osoitetta (päättyy /v1) {type}-yhteensopivalle API:lle.",
+    "compatibleBaseUrlHint": "Root URL of your {type}-compatible API. Use Advanced Settings for custom endpoint paths.",
     "apiKeyForCheck": "API-avain (tarkistusta varten)",
-    "compatibleProdPlaceholder": "{type} Yhteensopiva (tuote)"
+    "compatibleProdPlaceholder": "{type} Yhteensopiva (tuote)",
+    "providerTestTimeout": "Provider test timed out — too many connections to test at once",
+    "advancedSettings": "Advanced Settings",
+    "chatPathLabel": "Chat Endpoint Path",
+    "chatPathPlaceholder": "/chat/completions",
+    "chatPathHint": "Custom chat path for providers with non-standard APIs (e.g. /v4/chat/completions)",
+    "modelsPathLabel": "Models Endpoint Path",
+    "modelsPathPlaceholder": "/models",
+    "modelsPathHint": "Custom models path for validation (e.g. /v4/models)"
   },
   "settings": {
     "title": "Asetukset",
@@ -1496,6 +1554,8 @@
     "leastUsedDesc": "Valitse vähiten käytetty tili",
     "costOpt": "Kustannusopt",
     "costOptDesc": "Valitse halvin saatavilla oleva tili",
+    "strictRandom": "Strict Random",
+    "strictRandomDesc": "Shuffle deck — uses each account once before reshuffling",
     "stickyLimit": "Sticky Limit",
     "stickyLimitDesc": "Puhelut tilikohtaisesti ennen vaihtamista",
     "modelAliases": "Mallin aliakset",
@@ -1734,11 +1794,16 @@
     "customPricingNote": "Voit ohittaa tiettyjen mallien oletushinnoittelun. Mukautetut ohitukset ovat etusijalla automaattisesti tunnistettuihin hinnoitteluun nähden.",
     "editPricing": "Muokkaa hinnoittelua",
     "viewFullDetails": "Näytä täydelliset tiedot",
-    "themeCoral": "Koralli"
+    "themeCoral": "Koralli",
+    "cliFingerprint": "CLI Fingerprint Matching",
+    "cliFingerprintDesc": "Match native CLI binary signatures when proxying requests. Reorders headers and body fields to look identical to the official CLI tools. Your proxy IP is preserved.",
+    "cliFingerprintEnabled": "{count} provider(s) with CLI fingerprint active",
+    "enableFingerprintTitle": "Enable fingerprint for {provider}",
+    "disableFingerprintTitle": "Disable fingerprint for {provider}"
   },
   "translator": {
     "title": "Kääntäjä",
-    "metaTitle": "Kääntäjä leikkikenttä | OmniRoute",
+    "metaTitle": "Kääntäjä leikkikenttä | Zed API",
     "metaDescription": "Tee virheenkorjaus, testaa ja visualisoi API-muotojen käännökset palveluntarjoajien välillä",
     "playgroundTitle": "Kääntäjä leikkikenttä",
     "playground": "Leikkipaikka",
@@ -1746,11 +1811,11 @@
     "chatTester": "Chatin testaaja",
     "testBench": "Testipenkki",
     "liveMonitor": "Live Monitor",
-    "modeDescriptionPlayground": "Liitä mikä tahansa API-pyynnön runko ja katso, kuinka OmniRoute kääntää sen toimittajamuotojen välillä (OpenAI ↔ Claude ↔ Gemini ↔ Responses API)",
-    "modeDescriptionChatTester": "Lähetä todellisia chat-pyyntöjä OmniRouten kautta ja tarkasta koko meno-paluu: syöttö, käännetty pyyntö, palveluntarjoajan vastaus ja käännetty tulos.",
+    "modeDescriptionPlayground": "Liitä mikä tahansa API-pyynnön runko ja katso, kuinka Zed API kääntää sen toimittajamuotojen välillä (OpenAI ↔ Claude ↔ Gemini ↔ Responses API)",
+    "modeDescriptionChatTester": "Lähetä todellisia chat-pyyntöjä Zed APIn kautta ja tarkasta koko meno-paluu: syöttö, käännetty pyyntö, palveluntarjoajan vastaus ja käännetty tulos.",
     "modeDescriptionTestBench": "Suorita ennalta määritettyjä skenaarioita ja vertaile toimittajien ja mallien yhteensopivuutta.",
-    "modeDescriptionLiveMonitor": "Katso käännöstapahtumia reaaliajassa, kun pyynnöt kulkevat OmniRouten kautta.",
-    "modeDescriptionFallback": "Tee virheenkorjaus, testaa ja visualisoi, kuinka OmniRoute kääntää API-pyynnöt palveluntarjoajien välillä.",
+    "modeDescriptionLiveMonitor": "Katso käännöstapahtumia reaaliajassa, kun pyynnöt kulkevat Zed APIn kautta.",
+    "modeDescriptionFallback": "Tee virheenkorjaus, testaa ja visualisoi, kuinka Zed API kääntää API-pyynnöt palveluntarjoajien välillä.",
     "recentTranslations": "Viimeaikaiset käännökset",
     "noTranslations": "Ei vielä käännöksiä",
     "source": "lähde",
@@ -1767,7 +1832,7 @@
     "notAvailableSymbol": "—",
     "liveAutoRefreshing": "Live - automaattinen päivitys",
     "paused": "Keskeytetty",
-    "eventsAppearHint": "Käännöstapahtumat näkyvät täällä, kun pyynnöt kulkevat OmniRouten kautta. Käytä mitä tahansa näistä menetelmistä tapahtumien luomiseen:",
+    "eventsAppearHint": "Käännöstapahtumat näkyvät täällä, kun pyynnöt kulkevat Zed APIn kautta. Käytä mitä tahansa näistä menetelmistä tapahtumien luomiseen:",
     "chatTesterTab": "Chat Tester -välilehti",
     "testBenchTab": "Testipenkki-välilehti",
     "externalApiCalls": "Ulkoiset API-kutsut",
@@ -1776,7 +1841,7 @@
     "ok": "OK",
     "errorShort": "ERR",
     "formatConverter": "Format Converter",
-    "formatConverterDescription": "Liitä tai kirjoita JSON-pyynnön leipäteksti. Kääntäjä tunnistaa automaattisesti lähdemuodon ja muuntaa sen kohdemuotoon. Käytä tätä virheenkorjaukseen, kuinka OmniRoute kääntää pyynnöt muotojen välillä (OpenAI ↔ Claude ↔ Gemini ↔ Responses API).",
+    "formatConverterDescription": "Liitä tai kirjoita JSON-pyynnön leipäteksti. Kääntäjä tunnistaa automaattisesti lähdemuodon ja muuntaa sen kohdemuotoon. Käytä tätä virheenkorjaukseen, kuinka Zed API kääntää pyynnöt muotojen välillä (OpenAI ↔ Claude ↔ Gemini ↔ Responses API).",
     "input": "Syöte",
     "output": "Lähtö",
     "auto": "Auto",
@@ -1872,7 +1937,7 @@
     "clientRequest": "Asiakaspyyntö",
     "clientRequestDescription": "Pyynnön elin sellaisena kuin asiakkaasi sen lähettäisi",
     "formatDetected": "Muoto havaittu",
-    "formatDetectedDescription": "OmniRoute tunnistaa automaattisesti API-muodon pyyntörakenteesta",
+    "formatDetectedDescription": "Zed API tunnistaa automaattisesti API-muodon pyyntörakenteesta",
     "openaiIntermediate": "OpenAI Intermediate",
     "openaiIntermediateDescription": "Kaikki muodot normalisoidaan ensin OpenAI-muotoon (yleinen silta)",
     "providerFormat": "Tarjoajan muoto",
@@ -1885,7 +1950,7 @@
     "errorMessage": "Virhe: {message}",
     "requestFailed": "Pyyntö epäonnistui",
     "noTextExtracted": "(Ei tekstiä poimittu)",
-    "liveMonitorDescriptionPrefix": "Näyttää käännöstapahtumat, kun API-kutsut kulkevat OmniRouten kautta. Tapahtumat tulevat muistin puskurista (palautuu uudelleenkäynnistyksen yhteydessä). Käytä",
+    "liveMonitorDescriptionPrefix": "Näyttää käännöstapahtumat, kun API-kutsut kulkevat Zed APIn kautta. Tapahtumat tulevat muistin puskurista (palautuu uudelleenkäynnistyksen yhteydessä). Käytä",
     "liveMonitorDescriptionSuffix": "tai ulkoisia API-kutsuja tapahtumien luomiseksi."
   },
   "usage": {
@@ -1934,7 +1999,7 @@
     "define": "Määritä",
     "defineStepDescription": "Luo testitapauksia, joissa on syöttökehotteita ja odotettuja tulosehtoja käyttämällä strategioita, kuten sisältää, regex tai tarkka vastaavuus.",
     "run": "Juokse",
-    "runStepDescription": "Suorita testitapauksia LLM-päätepisteitäsi vastaan OmniRouten kautta. Jokainen tapaus lähetetään todellisena API-pyyntönä.",
+    "runStepDescription": "Suorita testitapauksia LLM-päätepisteitäsi vastaan Zed APIn kautta. Jokainen tapaus lähetetään todellisena API-pyyntönä.",
     "evaluate": "Arvioi",
     "evaluateStepDescription": "Vastauksia verrataan odotettuihin kriteereihin. Katso kunkin tapauksen hyväksyntä/hylkäys viivemittareiden ja yksityiskohtaisen palautteen avulla.",
     "evalSuites": "Arviointisviitit",
@@ -1971,14 +2036,14 @@
     "noResultsYet": "Ei tuloksia vielä",
     "testCasesCount": "Testitapaukset ({count})",
     "noTestCasesDefined": "Testitapauksia ei ole määritelty",
-    "runEvalHint": "Napsauta \"Suorita Eval\" suorittaaksesi kaikki tapaukset LLM-päätepisteellesi. Jokainen testi lähettää oikean pyynnön OmniRouten kautta.",
+    "runEvalHint": "Napsauta \"Suorita Eval\" suorittaaksesi kaikki tapaukset LLM-päätepisteellesi. Jokainen testi lähettää oikean pyynnön Zed APIn kautta.",
     "notifyNoTestCases": "Tälle sarjalle ei ole määritetty testitapauksia",
     "notifyAllCasesPassed": "Kaikki {total} tapausta ohitettu ✅",
     "notifySomeCasesFailed": "{passed}/{total} hyväksytty, {failed} epäonnistui",
     "notifyEvalRunFailed": "Eval-juoksu epäonnistui",
     "notifyEvalTitle": "Arvosana: {name}",
     "modelEvals": "Mallin arvioinnit",
-    "evalsHeroDescription": "Testaa ja vahvista LLM-päätepisteesi suorittamalla ennalta määritettyjä arviointipaketteja. Jokainen sarja sisältää testitapauksia, jotka lähettävät todellisia kehotteita OmniRouten kautta ja vertaavat vastauksia odotettuihin kriteereihin – auttaen sinua havaitsemaan regressioita, vertailla malleja ja varmistamaan vastausten laadun eri tarjoajien välillä.",
+    "evalsHeroDescription": "Testaa ja vahvista LLM-päätepisteesi suorittamalla ennalta määritettyjä arviointipaketteja. Jokainen sarja sisältää testitapauksia, jotka lähettävät todellisia kehotteita Zed APIn kautta ja vertaavat vastauksia odotettuihin kriteereihin – auttaen sinua havaitsemaan regressioita, vertailla malleja ja varmistamaan vastausten laadun eri tarjoajien välillä.",
     "qualityValidation": "Laadun validointi",
     "modelComparison": "Mallin vertailu",
     "regressionDetection": "Regression havaitseminen",
@@ -2020,6 +2085,9 @@
     "rawPlanWithValue": "Raakasuunnitelma: {plan}",
     "noPlanFromProvider": "Ei suunnitelmaa palveluntarjoajalta",
     "noQuotaData": "Ei kiintiötietoja",
+    "ungrouped": "Ungrouped",
+    "viewFlat": "Flat",
+    "viewByEnvironment": "By Environment",
     "noQuotaDataAvailable": "Kiintiötietoja ei ole saatavilla",
     "noAccountsForTierFilter": "Tasosuodattimelle ei löytynyt tilejä",
     "tierAll": "Kaikki",
@@ -2110,7 +2178,7 @@
     "loading": "Ladataan...",
     "invalidPassword": "Virheellinen salasana",
     "errorOccurredRetry": "Tapahtui virhe. Yritä uudelleen.",
-    "configureInstance": "Määritetään OmniRoute-esiintymäsi",
+    "configureInstance": "Määritetään Zed API-esiintymäsi",
     "runOnboardingWizard": "Määritä salasanasi ja yhdistä ensimmäinen tekoälypalveluntarjoajasi suorittamalla ohjattu käyttöönottotoiminto.",
     "startOnboarding": "Aloita perehtyminen",
     "secureYourInstance": "Suojaa tapauksesi",
@@ -2130,14 +2198,14 @@
     "featureUsageTrackingDesc": "Valvo kustannuksia ja tokeneja",
     "resetPassword": "Palauta salasana",
     "resetDescription": "Valitse menetelmä hallintapaneelin käyttöoikeuden palauttamiseksi",
-    "stopServer": "Pysäytä OmniRoute-palvelin",
+    "stopServer": "Pysäytä Zed API-palvelin",
     "processing": "Käsitellään...",
     "pleaseWait": "Odota, kun saamme valtuutuksen valmiiksi.",
     "authSuccess": "Valtuutus onnistui!",
     "copyUrl": "Kopioi tämä URL-osoite",
     "accessDenied": "Pääsy kielletty",
     "methodCliTitle": "Tapa 1: CLI-nollaus",
-    "methodCliDescription": "Suorita seuraava komento palvelimella, jossa OmniRoute on käynnissä:",
+    "methodCliDescription": "Suorita seuraava komento palvelimella, jossa Zed API on käynnissä:",
     "methodCliHint": "Tämä kehottaa sinua asettamaan uuden salasanan. Palvelin on ensin pysäytettävä.",
     "methodManualTitle": "Tapa 2: Manuaalinen nollaus",
     "methodManualDescription": "Poista salasana tietokannasta ja aseta uusi salasana käynnistyksen yhteydessä:",
@@ -2151,7 +2219,7 @@
     "forgotPassword": "Unohditko salasanan?"
   },
   "landing": {
-    "brandName": "OmniRoute",
+    "brandName": "Zed API",
     "navigateHome": "Navigoi kotiin",
     "toggleMenu": "Vaihda valikkoa",
     "featuresLink": "Ominaisuudet",
@@ -2181,17 +2249,17 @@
     "featureCliSupportDesc": "Toimii Claude Coden, Codexin, Clinen, Cursorin ja muiden kanssa.",
     "featureDashboardTitle": "Kojelauta",
     "featureDashboardDesc": "Visuaalinen kojelauta reaaliaikaista liikenneanalyysiä varten.",
-    "howItWorks": "Kuinka OmniRoute toimii",
+    "howItWorks": "Kuinka Zed API toimii",
     "howItWorksDescription": "Tiedot kulkevat saumattomasti sovelluksestasi älykkään reitityskerroksen kautta työsi parhaalle toimittajalle.",
     "howItWorksStep1Title": "1. CLI ja SDK:t",
     "howItWorksStep1Description": "Pyyntösi alkavat suosikkityökaluistasi tai yhdistetystä SDK:sta. Vaihda vain perus-URL-osoite.",
-    "howItWorksStep2Title": "2. OmniRoute Hub",
+    "howItWorksStep2Title": "2. Zed API Hub",
     "howItWorksStep2Description": "Moottorimme analysoi kehotteen, tarkistaa palveluntarjoajan kunnon ja reitit pienimmän viiveen tai kustannusten varalta.",
     "howItWorksStep3Title": "3. AI-palveluntarjoajat",
     "howItWorksStep3Description": "OpenAI, Anthropic, Gemini tai muut täyttävät pyynnön välittömästi.",
     "getStartedIn30Seconds": "Aloita 30 sekunnissa",
-    "getStartedDescription": "Asenna OmniRoute, määritä palveluntarjoajasi web-hallintapaneelin kautta ja aloita AI-pyyntöjen reitittäminen.",
-    "installOmniRoute": "Asenna OmniRoute",
+    "getStartedDescription": "Asenna Zed API, määritä palveluntarjoajasi web-hallintapaneelin kautta ja aloita AI-pyyntöjen reitittäminen.",
+    "installZed API": "Asenna Zed API",
     "installStepDescription": "Suorita npx-komento käynnistääksesi palvelimen välittömästi",
     "openDashboard": "Avaa Dashboard",
     "openDashboardStepDescription": "Määritä palveluntarjoajat ja API-avaimet verkkokäyttöliittymän kautta",
@@ -2200,7 +2268,7 @@
     "terminal": "terminaali",
     "copy": "Kopioi",
     "copied": "✓ Kopioitu",
-    "startingOmniRoute": "OmniRoute aloitetaan...",
+    "startingZed API": "Zed API aloitetaan...",
     "serverRunningOnLabel": "Palvelin käynnissä",
     "dashboardLabel": "Kojelauta",
     "readyToRoute": "Valmiina reittiin! ✓",
@@ -2217,7 +2285,7 @@
     "legal": "Laillinen",
     "mitLicense": "MIT-lisenssi",
     "footerTagline": "Tekoälyn sukupolven yhtenäinen päätepiste. Yhdistä, reititä ja hallitse tekoälypalveluntarjoajiasi helposti.",
-    "copyright": "© {year} OmniRoute. Kaikki oikeudet pidätetään.",
+    "copyright": "© {year} Zed API. Kaikki oikeudet pidätetään.",
     "flowToolClaudeCode": "Claude Code",
     "flowToolOpenAICodex": "OpenAI Codex",
     "flowToolCline": "Cline",
@@ -2228,7 +2296,7 @@
     "flowProviderGithubCopilot": "GitHub Copilot",
     "interactiveDiagram": "Interaktiivinen kaavio näkyy työpöydällä",
     "ctaTitle": "Oletko valmis yksinkertaistamaan tekoäly-infrastruktuuriasi?",
-    "ctaDescription": "Liity kehittäjien joukkoon, jotka virtaviivaistavat tekoälyintegraatiotaan OmniRouten avulla. Avoin lähdekoodi ja ilmainen aloittaa.",
+    "ctaDescription": "Liity kehittäjien joukkoon, jotka virtaviivaistavat tekoälyintegraatiotaan Zed APIn avulla. Avoin lähdekoodi ja ilmainen aloittaa.",
     "startFree": "Aloita ilmaiseksi",
     "readDocumentation": "Lue dokumentaatio"
   },
@@ -2314,9 +2382,9 @@
     "clientClaudeBullet1Middle": "(Claude) tai",
     "clientClaudeBullet1Suffix": "(Antigravity) etuliite.",
     "protocolsTitle": "Protokollat: MCP & A2A",
-    "protocolsDescription": "OmniRoute paljastaa kaksi toimintaprotokollaa OpenAI-yhteensopivien sovellusliittymien lisäksi: MCP työkalujen suorittamiseen ja A2A agenttien välisiin työnkulkuihin.",
+    "protocolsDescription": "Zed API paljastaa kaksi toimintaprotokollaa OpenAI-yhteensopivien sovellusliittymien lisäksi: MCP työkalujen suorittamiseen ja A2A agenttien välisiin työnkulkuihin.",
     "protocolMcpTitle": "MCP (Model Context Protocol)",
-    "protocolMcpDesc": "Käytä MCP over stdio -palvelua, jotta asiakkaat voivat löytää ja kutsua OmniRoute-työkaluja tarkastuksen näkyvyydellä.",
+    "protocolMcpDesc": "Käytä MCP over stdio -palvelua, jotta asiakkaat voivat löytää ja kutsua Zed API-työkaluja tarkastuksen näkyvyydellä.",
     "protocolMcpStep1": "Aloita MCP-siirto `omniroute --mcp`:lla.",
     "protocolMcpStep2": "Osoita MCP-asiakkaasi stdio-kuljetukseen.",
     "protocolMcpStep3": "Vahvista yhteys soittamalla `omniroute_get_health` ja `omniroute_list_combos`.",
@@ -2359,10 +2427,10 @@
     "clearHistory": "Tyhjennä käyttöhistoria milloin tahansa",
     "configureRetention": "Määritä lokin säilytyskäytännöt",
     "backupRestore": "Varmuuskopioi ja palauta tietokanta",
-    "privacyMetadataTitle": "Tietosuojakäytäntö | OmniRoute",
-    "privacyMetadataDescription": "OmniRoute AI API -välityspalvelimen reitittimen tietosuojakäytäntö.",
-    "termsMetadataTitle": "Palveluehdot | OmniRoute",
-    "termsMetadataDescription": "OmniRoute AI API -välityspalvelimen reitittimen käyttöehdot.",
+    "privacyMetadataTitle": "Tietosuojakäytäntö | Zed API",
+    "privacyMetadataDescription": "Zed API AI API -välityspalvelimen reitittimen tietosuojakäytäntö.",
+    "termsMetadataTitle": "Palveluehdot | Zed API",
+    "termsMetadataDescription": "Zed API AI API -välityspalvelimen reitittimen käyttöehdot.",
     "backToHome": "Takaisin kotiin",
     "lastUpdated": "Viimeksi päivitetty: {date}",
     "policyLastUpdatedDate": "13. helmikuuta 2026",
@@ -2370,7 +2438,7 @@
     "questionsVisit": "Kysymyksiä? Vieraile meillä",
     "githubRepository": "GitHub-arkisto",
     "privacySection1Title": "1. Local-First Architecture",
-    "privacySection1Text": "OmniRoute on suunniteltu paikalliseksi sovellukseksi. Kaikki tietojen käsittely ja tallennus tapahtuu kokonaan koneessasi. Ei ole keskitettyä palvelinta, joka kerää tietojasi.",
+    "privacySection1Text": "Zed API on suunniteltu paikalliseksi sovellukseksi. Kaikki tietojen käsittely ja tallennus tapahtuu kokonaan koneessasi. Ei ole keskitettyä palvelinta, joka kerää tietojasi.",
     "privacySection2Title": "2. Tallentamamme tiedot",
     "privacyDataStoredIn": "Seuraavat tiedot on tallennettu paikallisesti",
     "privacyDataProviderConfigurationsDesc": "yhteyden URL-osoitteet, palveluntarjoajan tyypit ja prioriteettiasetukset",
@@ -2378,9 +2446,9 @@
     "privacyDataUsageLogsDesc": "pyyntöjen määrät, tunnuksen käyttö, mallien nimet, aikaleimat ja vastausajat",
     "privacyDataApplicationSettingsDesc": "teemaasetukset, reititysstrategia ja yhdistelmäkokoonpanot",
     "privacySection3Title": "3. Ei telemetriaa",
-    "privacySection3Text": "OmniRoute ei kerää telemetria-, analytiikka- tai virheraportteja. Tietoja ei lähetetä meille tai millekään kolmannelle osapuolelle. Käyttömallisi, API-kutsusi ja kokoonpanosi pysyvät täysin yksityisinä.",
+    "privacySection3Text": "Zed API ei kerää telemetria-, analytiikka- tai virheraportteja. Tietoja ei lähetetä meille tai millekään kolmannelle osapuolelle. Käyttömallisi, API-kutsusi ja kokoonpanosi pysyvät täysin yksityisinä.",
     "privacySection4Title": "4. Kolmannen osapuolen tekoälypalveluntarjoajat",
-    "privacySection4Text": "Kun soitat API-kutsuja OmniRouten kautta, pyyntösi välitetään määrittämillesi tekoälypalveluntarjoajille (esimerkiksi OpenAI, Anthropic, Google). Näillä palveluntarjoajilla on omat tietosuojakäytäntönsä, jotka säätelevät, kuinka he käsittelevät tietojasi. Tarkista:",
+    "privacySection4Text": "Kun soitat API-kutsuja Zed APIn kautta, pyyntösi välitetään määrittämillesi tekoälypalveluntarjoajille (esimerkiksi OpenAI, Anthropic, Google). Näillä palveluntarjoajilla on omat tietosuojakäytäntönsä, jotka säätelevät, kuinka he käsittelevät tietojasi. Tarkista:",
     "privacyOpenAiPolicy": "OpenAI:n tietosuojakäytäntö",
     "privacyAnthropicPolicy": "Antrooppinen tietosuojakäytäntö",
     "privacyGooglePolicy": "Googlen tietosuojakäytäntö",
@@ -2392,21 +2460,21 @@
     "privacySection7TextStart": "Koska kaikki tiedot tallennetaan paikallisesti, sinulla on täysi hallinta. Voit poistaa tietosi milloin tahansa poistamalla",
     "privacySection7TextEnd": "hakemistosta tai käyttämällä tietokannan varmuuskopiointi- ja palautustoimintoja kojelaudassa.",
     "termsSection1Title": "1. Yleiskatsaus",
-    "termsSection1Text": "OmniRoute on paikallinen ensimmäinen AI API -välityspalvelin, joka toimii kokonaan koneessasi. Se reitittää pyynnöt useille tekoälypalveluntarjoajille kuormituksen tasapainottamisen, vikasietoisuuden ja käytön seurannan avulla.",
+    "termsSection1Text": "Zed API on paikallinen ensimmäinen AI API -välityspalvelin, joka toimii kokonaan koneessasi. Se reitittää pyynnöt useille tekoälypalveluntarjoajille kuormituksen tasapainottamisen, vikasietoisuuden ja käytön seurannan avulla.",
     "termsSection2Title": "2. Käyttäjän velvollisuudet",
     "termsResponsibilityApiKeys": "Olet yksin vastuussa omien API-avainten ja valtuustietojen hallinnasta kolmannen osapuolen AI-palveluntarjoajille (OpenAI, Anthropic, Google jne.).",
-    "termsResponsibilityCompliance": "Sinun on noudatettava jokaisen tekoälyn palveluntarjoajan, jonka API:ta käytät OmniRouten kautta, käyttöehtoja.",
-    "termsResponsibilitySecurity": "Olet vastuussa paikallisen OmniRoute-asennuksesi turvallisuudesta, mukaan lukien salasanan asettamisesta ja verkkoon pääsyn rajoittamisesta.",
+    "termsResponsibilityCompliance": "Sinun on noudatettava jokaisen tekoälyn palveluntarjoajan, jonka API:ta käytät Zed APIn kautta, käyttöehtoja.",
+    "termsResponsibilitySecurity": "Olet vastuussa paikallisen Zed API-asennuksesi turvallisuudesta, mukaan lukien salasanan asettamisesta ja verkkoon pääsyn rajoittamisesta.",
     "termsSection3Title": "3. Kuinka se toimii",
-    "termsSection3Text": "OmniRoute toimii välittäjänä. OmniRouteen lähetetyt API-kutsut käännetään ja välitetään määritetyille tekoälypalveluntarjoajille. OmniRoute ei muuta pyyntöjesi tai vastaustesi sisältöä tarvittavan protokollan käännöksen lisäksi.",
+    "termsSection3Text": "Zed API toimii välittäjänä. Zed APIen lähetetyt API-kutsut käännetään ja välitetään määritetyille tekoälypalveluntarjoajille. Zed API ei muuta pyyntöjesi tai vastaustesi sisältöä tarvittavan protokollan käännöksen lisäksi.",
     "termsSection4Title": "4. Tietojen käsittely",
     "termsDataStoredLocally": "Kaikki tiedot tallennetaan paikallisesti koneellesi SQLite-tietokantaan.",
-    "termsNoTransmission": "OmniRoute ei lähetä mitään tietoja ulkoisille palvelimille, ellet ota pilvisynkronointiominaisuuksia erikseen käyttöön.",
+    "termsNoTransmission": "Zed API ei lähetä mitään tietoja ulkoisille palvelimille, ellet ota pilvisynkronointiominaisuuksia erikseen käyttöön.",
     "termsDataLocationText": "Käyttölokit, API-avaimet ja määritykset tallennetaan",
     "termsSection5Title": "5. Vastuuvapauslauseke",
-    "termsSection5Text": "OmniRoute toimitetaan \"sellaisenaan\" ilman minkäänlaista takuuta. Emme ole vastuussa kustannuksista, jotka aiheutuvat API:n käytöstä, palveluhäiriöistä tai tietojen katoamisesta. Pidä aina varmuuskopiot asetuksistasi.",
+    "termsSection5Text": "Zed API toimitetaan \"sellaisenaan\" ilman minkäänlaista takuuta. Emme ole vastuussa kustannuksista, jotka aiheutuvat API:n käytöstä, palveluhäiriöistä tai tietojen katoamisesta. Pidä aina varmuuskopiot asetuksistasi.",
     "termsSection6Title": "6. Avoin lähdekoodi",
-    "termsSection6Text": "OmniRoute on avoimen lähdekoodin ohjelmisto. Voit vapaasti tarkastaa, muokata ja jakaa sitä sen lisenssiehtojen mukaisesti."
+    "termsSection6Text": "Zed API on avoimen lähdekoodin ohjelmisto. Voit vapaasti tarkastaa, muokata ja jakaa sitä sen lisenssiehtojen mukaisesti."
   },
   "endpoints": {
     "tabProxy": "Endpoint Proxy",
@@ -2419,5 +2487,45 @@
     "featureWebhooks": "Webhook configuration and event subscriptions",
     "featureSwagger": "OpenAPI / Swagger spec auto-generation",
     "featureAuth": "API key and OAuth scope management per endpoint"
+  },
+  "agents": {
+    "title": "CLI Agents",
+    "description": "Discover installed CLI agents on your system. Add custom agents for auto-detection.",
+    "refresh": "Refresh",
+    "installed": "Installed",
+    "notFound": "Not Found",
+    "builtIn": "Built-in",
+    "custom": "Custom",
+    "remove": "Remove",
+    "addCustomAgent": "Add Custom Agent",
+    "addCustomAgentDesc": "Register any CLI tool for detection. It will be scanned automatically on refresh.",
+    "agentName": "Agent Name",
+    "binaryName": "Binary Name",
+    "versionCommand": "Version Command",
+    "spawnArgs": "Spawn Args",
+    "addAgent": "Add Agent"
+  },
+  "autoCombo": {
+    "title": "Auto-Combo Engine",
+    "statusNormal": "Normal",
+    "statusIncident": "Incident Mode",
+    "modePack": "Mode Pack",
+    "providerScores": "Provider Scores",
+    "noAutoCombo": "No auto-combo configured.",
+    "excludedProviders": "Excluded Providers",
+    "noExclusions": "No providers currently excluded.",
+    "factorQuota": "Quota",
+    "factorHealth": "Health",
+    "factorCost": "Cost",
+    "factorLatency": "Latency",
+    "factorTaskFit": "Task Fit",
+    "factorStability": "Stability",
+    "factorTierPriority": "Tier Priority",
+    "factorTierPriorityDesc": "Prefers accounts with higher quota tiers (Ultra/Pro over Free)",
+    "scoreFactorBreakdown": "Scoring Factors",
+    "modePackShipFast": "Ship Fast",
+    "modePackCostSaver": "Cost Saver",
+    "modePackQualityFirst": "Quality First",
+    "modePackOfflineFriendly": "Offline Friendly"
   }
 }

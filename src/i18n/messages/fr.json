@@ -79,8 +79,8 @@
     "auditLog": "Journal d'audit",
     "shutdown": "Arrêt",
     "restart": "Redémarrer",
-    "shutdownConfirm": "Arrêter OmniRoute ?",
-    "restartConfirm": "Redémarrer OmniRoute ?",
+    "shutdownConfirm": "Arrêter Zed API ?",
+    "restartConfirm": "Redémarrer Zed API ?",
     "version": "v{version}",
     "debug": "Débogage",
     "system": "Système",
@@ -128,7 +128,7 @@
     "cliTools": "Outils CLI",
     "cliToolsDescription": "Configurer les outils CLI",
     "home": "Accueil",
-    "homeDescription": "Bienvenue sur OmniRoute",
+    "homeDescription": "Bienvenue sur Zed API",
     "endpoint": "Points d'accès",
     "endpointDescription": "Gérer les points d'accès proxy, MCP, A2A et les points d'accès API",
     "settings": "Paramètres",
@@ -138,7 +138,11 @@
     "media": "Médias",
     "mediaDescription": "Générez des images, des vidéos et de la musique",
     "themes": "Thèmes",
-    "themesDescription": "Choisissez un thème de couleur pour l'ensemble du panneau du tableau de bord"
+    "themesDescription": "Choisissez un thème de couleur pour l'ensemble du panneau du tableau de bord",
+    "mcp": "MCP",
+    "mcpDescription": "Model Context Protocol server management and tools",
+    "a2a": "A2A",
+    "a2aDescription": "Agent-to-Agent protocol tasks and observability"
   },
   "home": {
     "quickStart": "Démarrage rapide",
@@ -370,8 +374,8 @@
     "mappingsSaved": "Mappages enregistrés !",
     "failedSaveMappings": "Échec de l'enregistrement des mappages",
     "howItWorks": "Comment ça marche :",
-    "antigravityHowWorksDesc": "Antigravity envoie des requêtes au point de terminaison de Google. MITM les intercepte et les redirige vers OmniRoute.",
-    "antigravityStep1": "1. Démarrez MITM pour acheminer les demandes via OmniRoute.",
+    "antigravityHowWorksDesc": "Antigravity envoie des requêtes au point de terminaison de Google. MITM les intercepte et les redirige vers Zed API.",
+    "antigravityStep1": "1. Démarrez MITM pour acheminer les demandes via Zed API.",
     "antigravityStep2Prefix": "2. Ajouter",
     "antigravityStep2Suffix": "à votre fichier hosts en tant que 127.0.0.1.",
     "antigravityStep3": "3. Ouvrez Antigravity et les requêtes seront proxy.",
@@ -417,7 +421,7 @@
     "applied": "Appliqué!",
     "failed": "Échec",
     "resetDone": "Réinitialisez !",
-    "omnirouteConfiguredOpenAiCompatible": "OmniRoute est configuré en tant que fournisseur compatible OpenAI",
+    "omnirouteConfiguredOpenAiCompatible": "Zed API est configuré en tant que fournisseur compatible OpenAI",
     "provider": "Fournisseur",
     "model": "Modèle",
     "providers": "Fournisseurs",
@@ -456,7 +460,9 @@
       "cline": "CLI de l'assistant de codage Cline AI",
       "kilo": "CLI de l'assistant IA Kilo Code",
       "cursor": "Éditeur de code AI du curseur",
-      "continue": "Continuer l'Assistant IA"
+      "continue": "Continuer l'Assistant IA",
+      "opencode": "OpenCode AI coding agent (Terminal)",
+      "kiro": "Amazon Kiro — AI-powered IDE"
     },
     "guides": {
       "cursor": {
@@ -503,6 +509,42 @@
           "4": {
             "title": "Ajouter une configuration de modèle",
             "desc": "Ajoutez la configuration suivante à votre tableau models :"
+          }
+        }
+      },
+      "opencode": {
+        "steps": {
+          "1": {
+            "title": "Install OpenCode",
+            "desc": "Install via npm: npm install -g opencode-ai"
+          },
+          "2": {
+            "title": "API Key"
+          },
+          "3": {
+            "title": "Set Base URL",
+            "desc": "opencode config set baseUrl {{baseUrl}}"
+          },
+          "4": {
+            "title": "Select Model"
+          }
+        }
+      },
+      "kiro": {
+        "steps": {
+          "1": {
+            "title": "Open Kiro Settings",
+            "desc": "Go to Settings → AI Provider"
+          },
+          "2": {
+            "title": "Base URL",
+            "desc": "Paste your Zed API endpoint URL"
+          },
+          "3": {
+            "title": "API Key"
+          },
+          "4": {
+            "title": "Select Model"
           }
         }
       }
@@ -562,6 +604,8 @@
     "randomDesc": "Sélection aléatoire uniforme, puis retour aux modèles restants",
     "leastUsedDesc": "Sélectionne le modèle avec le moins de demandes, en équilibrant la charge au fil du temps",
     "costOptimizedDesc": "Itinéraires vers le modèle le moins cher en premier en fonction du prix",
+    "strictRandom": "Strict Random",
+    "strictRandomDesc": "Shuffle deck — uses each model once before reshuffling",
     "models": "Modèles",
     "autoBalance": "Équilibre automatique",
     "advancedSettings": "Paramètres avancés",
@@ -704,7 +748,9 @@
         "tip2": "Garde un fallback de qualité pour les prompts difficiles.",
         "tip3": "Idéal pour batch/tâches de fond où le coût est le KPI principal."
       }
-    }
+    },
+    "templateFreeStack": "Free Stack ($0)",
+    "templateFreeStackDesc": "Round-robin across all free providers: Kiro (Claude), iFlow (5 models), Qwen (4 models), Gemini CLI. Zero cost, never stops coding."
   },
   "costs": {
     "title": "Coûts",
@@ -747,7 +793,7 @@
     "moderationsDesc": "Modération du contenu et classification de sécurité",
     "responsesDesc": "API Responses d'OpenAI pour Codex et workflows agentiques avancés",
     "listModelsDesc": "Lister tous les modèles disponibles sur tous les fournisseurs connectés",
-    "settingsApiDesc": "Lire et modifier la configuration d'OmniRoute via l'API",
+    "settingsApiDesc": "Lire et modifier la configuration d'Zed API via l'API",
     "settingsApi": "Settings API",
     "categoryCore": "APIs Principales",
     "categoryMedia": "Médias et Multi-Modal",
@@ -816,7 +862,9 @@
     "a2aQuickStartTitle": "Démarrage rapide A2A",
     "a2aQuickStartStep1": "Découvrez la carte d'agent sur `/.well-known/agent.json`.",
     "a2aQuickStartStep2": "Envoyez des requêtes JSON-RPC à `POST /a2a` en utilisant `message/send` ou `message/stream`.",
-    "a2aQuickStartStep3": "Suivez et contrôlez les tâches à l’aide de `tasks/get` et `tasks/cancel`."
+    "a2aQuickStartStep3": "Suivez et contrôlez les tâches à l’aide de `tasks/get` et `tasks/cancel`.",
+    "completionsLegacy": "Completions (Legacy)",
+    "completionsLegacyDesc": "Legacy OpenAI text completions — accepts both prompt string and messages array format"
   },
   "mcpDashboard": {
     "loading": "Chargement du tableau de bord MCP...",
@@ -942,7 +990,7 @@
   },
   "health": {
     "title": "Santé du système",
-    "description": "Surveillance en temps réel de votre instance OmniRoute",
+    "description": "Surveillance en temps réel de votre instance Zed API",
     "healthy": "Sain",
     "degraded": "Dégradé",
     "down": "Vers le bas",
@@ -1065,7 +1113,7 @@
     "passwordsMismatch": "Les mots de passe ne correspondent pas",
     "setupComplete": "Configuration terminée !",
     "goToDashboard": "Accédez au tableau de bord →",
-    "welcomeDesc": "OmniRoute est votre proxy API IA local. Il achemine les requêtes vers plusieurs fournisseurs d'IA avec équilibrage de charge, basculement et suivi de l'utilisation.",
+    "welcomeDesc": "Zed API est votre proxy API IA local. Il achemine les requêtes vers plusieurs fournisseurs d'IA avec équilibrage de charge, basculement et suivi de l'utilisation.",
     "multiProvider": "Multi-fournisseur",
     "usageTracking": "Suivi de l'utilisation",
     "apiKeyMgmt": "Gestion des clés API",
@@ -1080,7 +1128,7 @@
     "noProviderFound": "Aucun fournisseur trouvé. Vous pourrez en ajouter un depuis le tableau de bord plus tard.",
     "testFailed": "Le test a échoué, mais vous pourrez le configurer ultérieurement.",
     "couldNotTest": "Impossible de tester pour le moment. Vous pouvez tester depuis le tableau de bord.",
-    "doneDesc": "Vous êtes prêt ! Votre instance OmniRoute est configurée et prête à proxyer les requêtes IA.",
+    "doneDesc": "Vous êtes prêt ! Votre instance Zed API est configurée et prête à proxyer les requêtes IA.",
     "yourEndpoint": "Votre point de terminaison :",
     "continue": "Continuer",
     "retry": "Réessayer",
@@ -1332,13 +1380,23 @@
     "email": "Courriel",
     "healthCheckMinutes": "Bilan de santé (min)",
     "healthCheckHint": "Intervalle d’actualisation proactif des jetons. 0 = désactivé.",
+    "groupLabel": "Environment",
+    "groupPlaceholder": "e.g. eKaizen, Personal",
     "failedTestConnection": "Échec du test de connexion",
     "failed": "Échec",
     "leaveBlankKeepCurrentApiKey": "Laissez vide pour conserver la clé API actuelle.",
     "editCompatibleTitle": "Modifier {type} Compatible",
-    "compatibleBaseUrlHint": "Utilisez l'URL de base (se terminant par /v1) pour votre API compatible {type}.",
+    "compatibleBaseUrlHint": "Root URL of your {type}-compatible API. Use Advanced Settings for custom endpoint paths.",
     "apiKeyForCheck": "Clé API (pour vérification)",
-    "compatibleProdPlaceholder": "{type} Compatible (Prod)"
+    "compatibleProdPlaceholder": "{type} Compatible (Prod)",
+    "providerTestTimeout": "Provider test timed out — too many connections to test at once",
+    "advancedSettings": "Advanced Settings",
+    "chatPathLabel": "Chat Endpoint Path",
+    "chatPathPlaceholder": "/chat/completions",
+    "chatPathHint": "Custom chat path for providers with non-standard APIs (e.g. /v4/chat/completions)",
+    "modelsPathLabel": "Models Endpoint Path",
+    "modelsPathPlaceholder": "/models",
+    "modelsPathHint": "Custom models path for validation (e.g. /v4/models)"
   },
   "settings": {
     "title": "Paramètres",
@@ -1496,6 +1554,8 @@
     "leastUsedDesc": "Choisissez le compte le moins récemment utilisé",
     "costOpt": "Option de coût",
     "costOptDesc": "Préférer le compte disponible le moins cher",
+    "strictRandom": "Strict Random",
+    "strictRandomDesc": "Shuffle deck — uses each account once before reshuffling",
     "stickyLimit": "Limite collante",
     "stickyLimitDesc": "Appels par compte avant de changer",
     "modelAliases": "Alias de modèle",
@@ -1734,11 +1794,16 @@
     "customPricingNote": "Vous pouvez remplacer le prix par défaut pour des modèles spécifiques. Les remplacements personnalisés ont la priorité sur les prix détectés automatiquement.",
     "editPricing": "Modifier le prix",
     "viewFullDetails": "Afficher tous les détails",
-    "themeCoral": "Corail"
+    "themeCoral": "Corail",
+    "cliFingerprint": "CLI Fingerprint Matching",
+    "cliFingerprintDesc": "Match native CLI binary signatures when proxying requests. Reorders headers and body fields to look identical to the official CLI tools. Your proxy IP is preserved.",
+    "cliFingerprintEnabled": "{count} provider(s) with CLI fingerprint active",
+    "enableFingerprintTitle": "Enable fingerprint for {provider}",
+    "disableFingerprintTitle": "Disable fingerprint for {provider}"
   },
   "translator": {
     "title": "Traducteur",
-    "metaTitle": "Aire de jeux pour traducteurs | OmniRoute",
+    "metaTitle": "Aire de jeux pour traducteurs | Zed API",
     "metaDescription": "Déboguer, tester et visualiser les traductions au format API entre les fournisseurs",
     "playgroundTitle": "Terrain de jeu des traducteurs",
     "playground": "Aire de jeux",
@@ -1746,11 +1811,11 @@
     "chatTester": "Testeur de chat",
     "testBench": "Banc d'essai",
     "liveMonitor": "Moniteur en direct",
-    "modeDescriptionPlayground": "Collez n'importe quel corps de requête d'API et voyez comment OmniRoute le traduit entre les formats de fournisseur (OpenAI ↔ Claude ↔ Gemini ↔ API Responses)",
-    "modeDescriptionChatTester": "Envoyez de vraies demandes de chat via OmniRoute et inspectez l'aller-retour complet : entrée, demande traduite, réponse du fournisseur et sortie traduite.",
+    "modeDescriptionPlayground": "Collez n'importe quel corps de requête d'API et voyez comment Zed API le traduit entre les formats de fournisseur (OpenAI ↔ Claude ↔ Gemini ↔ API Responses)",
+    "modeDescriptionChatTester": "Envoyez de vraies demandes de chat via Zed API et inspectez l'aller-retour complet : entrée, demande traduite, réponse du fournisseur et sortie traduite.",
     "modeDescriptionTestBench": "Exécutez des scénarios prédéfinis et comparez la compatibilité entre les fournisseurs et les modèles.",
-    "modeDescriptionLiveMonitor": "Regardez les événements de traduction en temps réel à mesure que les demandes transitent par OmniRoute.",
-    "modeDescriptionFallback": "Déboguez, testez et visualisez comment OmniRoute traduit les requêtes API entre les fournisseurs.",
+    "modeDescriptionLiveMonitor": "Regardez les événements de traduction en temps réel à mesure que les demandes transitent par Zed API.",
+    "modeDescriptionFallback": "Déboguez, testez et visualisez comment Zed API traduit les requêtes API entre les fournisseurs.",
     "recentTranslations": "Traductions récentes",
     "noTranslations": "Pas encore de traductions",
     "source": "Source",
@@ -1767,7 +1832,7 @@
     "notAvailableSymbol": "—",
     "liveAutoRefreshing": "En direct – Actualisation automatique",
     "paused": "En pause",
-    "eventsAppearHint": "Les événements de traduction apparaissent ici à mesure que les demandes transitent par OmniRoute. Utilisez l'une de ces méthodes pour générer des événements :",
+    "eventsAppearHint": "Les événements de traduction apparaissent ici à mesure que les demandes transitent par Zed API. Utilisez l'une de ces méthodes pour générer des événements :",
     "chatTesterTab": "Onglet Testeur de chat",
     "testBenchTab": "Onglet Banc de Test",
     "externalApiCalls": "Appels d'API externes",
@@ -1776,7 +1841,7 @@
     "ok": "D'accord",
     "errorShort": "ERREUR",
     "formatConverter": "Convertisseur de formats",
-    "formatConverterDescription": "Collez ou saisissez un corps de requête JSON. Le traducteur détectera automatiquement le format source et le convertira au format cible. Utilisez-le pour déboguer la façon dont OmniRoute traduit les requêtes entre les formats (OpenAI ↔ Claude ↔ Gemini ↔ API Responses).",
+    "formatConverterDescription": "Collez ou saisissez un corps de requête JSON. Le traducteur détectera automatiquement le format source et le convertira au format cible. Utilisez-le pour déboguer la façon dont Zed API traduit les requêtes entre les formats (OpenAI ↔ Claude ↔ Gemini ↔ API Responses).",
     "input": "Entrée",
     "output": "Sortie",
     "auto": "Automatique",
@@ -1872,7 +1937,7 @@
     "clientRequest": "Demande du client",
     "clientRequestDescription": "Le corps de la requête tel que votre client l'enverrait",
     "formatDetected": "Format détecté",
-    "formatDetectedDescription": "OmniRoute détecte automatiquement le format de l'API à partir de la structure de la demande",
+    "formatDetectedDescription": "Zed API détecte automatiquement le format de l'API à partir de la structure de la demande",
     "openaiIntermediate": "Intermédiaire OpenAI",
     "openaiIntermediateDescription": "Tous les formats sont d'abord normalisés au format OpenAI (le pont universel)",
     "providerFormat": "Format du fournisseur",
@@ -1885,7 +1950,7 @@
     "errorMessage": "Erreur : {message}",
     "requestFailed": "La demande a échoué",
     "noTextExtracted": "(Aucun texte extrait)",
-    "liveMonitorDescriptionPrefix": "Affiche les événements de traduction lorsque les appels d'API transitent par OmniRoute. Les événements proviennent du tampon en mémoire (réinitialisation au redémarrage). Utiliser",
+    "liveMonitorDescriptionPrefix": "Affiche les événements de traduction lorsque les appels d'API transitent par Zed API. Les événements proviennent du tampon en mémoire (réinitialisation au redémarrage). Utiliser",
     "liveMonitorDescriptionSuffix": ", ou des appels d'API externes pour générer des événements."
   },
   "usage": {
@@ -1934,7 +1999,7 @@
     "define": "Définir",
     "defineStepDescription": "Créez des scénarios de test avec des invites de saisie et des critères de sortie attendus à l'aide de stratégies telles que le contenu, l'expression régulière ou la correspondance exacte.",
     "run": "Courir",
-    "runStepDescription": "Exécutez des cas de test sur vos points de terminaison LLM via OmniRoute. Chaque cas est envoyé comme une véritable requête API.",
+    "runStepDescription": "Exécutez des cas de test sur vos points de terminaison LLM via Zed API. Chaque cas est envoyé comme une véritable requête API.",
     "evaluate": "Évaluer",
     "evaluateStepDescription": "Les réponses sont comparées aux critères attendus. Voir réussite/échec pour chaque cas avec des mesures de latence et des commentaires détaillés.",
     "evalSuites": "Suites d'évaluation",
@@ -1971,14 +2036,14 @@
     "noResultsYet": "Aucun résultat pour l'instant",
     "testCasesCount": "Cas de test ({count})",
     "noTestCasesDefined": "Aucun cas de test défini",
-    "runEvalHint": "Cliquez sur « Exécuter l'évaluation » pour exécuter tous les cas sur votre point de terminaison LLM. Chaque test envoie une requête réelle via OmniRoute.",
+    "runEvalHint": "Cliquez sur « Exécuter l'évaluation » pour exécuter tous les cas sur votre point de terminaison LLM. Chaque test envoie une requête réelle via Zed API.",
     "notifyNoTestCases": "Aucun cas de test défini pour cette suite",
     "notifyAllCasesPassed": "Tous les {total} cas ont été réussis ✅",
     "notifySomeCasesFailed": "{passed}/{total} réussi, {failed} échoué",
     "notifyEvalRunFailed": "Échec de l'exécution de l'évaluation",
     "notifyEvalTitle": "Évaluation : {name}",
     "modelEvals": "Évaluations de modèles",
-    "evalsHeroDescription": "Testez et validez vos points de terminaison LLM en exécutant des suites d'évaluation prédéfinies. Chaque suite contient des cas de test qui envoient des invites réelles via OmniRoute et comparent les réponses aux critères attendus, vous aidant ainsi à détecter les régressions, à comparer les modèles et à garantir la qualité des réponses entre les fournisseurs.",
+    "evalsHeroDescription": "Testez et validez vos points de terminaison LLM en exécutant des suites d'évaluation prédéfinies. Chaque suite contient des cas de test qui envoient des invites réelles via Zed API et comparent les réponses aux critères attendus, vous aidant ainsi à détecter les régressions, à comparer les modèles et à garantir la qualité des réponses entre les fournisseurs.",
     "qualityValidation": "Validation de la qualité",
     "modelComparison": "Comparaison des modèles",
     "regressionDetection": "Détection de régression",
@@ -2020,6 +2085,9 @@
     "rawPlanWithValue": "Plan brut : {plan}",
     "noPlanFromProvider": "Aucun plan du fournisseur",
     "noQuotaData": "Aucune donnée de quota",
+    "ungrouped": "Ungrouped",
+    "viewFlat": "Flat",
+    "viewByEnvironment": "By Environment",
     "noQuotaDataAvailable": "Aucune donnée de quota disponible",
     "noAccountsForTierFilter": "Aucun compte trouvé pour le filtre de niveau",
     "tierAll": "Tout",
@@ -2110,7 +2178,7 @@
     "loading": "Chargement...",
     "invalidPassword": "Mot de passe invalide",
     "errorOccurredRetry": "Une erreur s'est produite. Veuillez réessayer.",
-    "configureInstance": "Configureons votre instance OmniRoute",
+    "configureInstance": "Configureons votre instance Zed API",
     "runOnboardingWizard": "Exécutez l'assistant d'onboarding pour configurer votre mot de passe et connecter votre premier fournisseur d'IA.",
     "startOnboarding": "Commencer l'intégration",
     "secureYourInstance": "Sécurisez votre instance",
@@ -2130,14 +2198,14 @@
     "featureUsageTrackingDesc": "Surveiller les coûts et les jetons",
     "resetPassword": "Réinitialiser le mot de passe",
     "resetDescription": "Choisissez une méthode pour récupérer l'accès à votre tableau de bord",
-    "stopServer": "Arrêtez le serveur OmniRoute",
+    "stopServer": "Arrêtez le serveur Zed API",
     "processing": "Traitement...",
     "pleaseWait": "Veuillez patienter pendant que nous finalisons l'autorisation.",
     "authSuccess": "Autorisation réussie !",
     "copyUrl": "Copiez cette URL",
     "accessDenied": "Accès refusé",
     "methodCliTitle": "Méthode 1 : réinitialisation de la CLI",
-    "methodCliDescription": "Exécutez la commande suivante sur le serveur sur lequel OmniRoute est exécuté :",
+    "methodCliDescription": "Exécutez la commande suivante sur le serveur sur lequel Zed API est exécuté :",
     "methodCliHint": "Cela vous demandera de définir un nouveau mot de passe. Le serveur doit d'abord être arrêté.",
     "methodManualTitle": "Méthode 2 : réinitialisation manuelle",
     "methodManualDescription": "Supprimez le mot de passe de la base de données et définissez-en un nouveau au démarrage :",
@@ -2151,7 +2219,7 @@
     "forgotPassword": "Mot de passe oublié ?"
   },
   "landing": {
-    "brandName": "OmniRoute",
+    "brandName": "Zed API",
     "navigateHome": "Accédez à la maison",
     "toggleMenu": "Changer de menu",
     "featuresLink": "Caractéristiques",
@@ -2181,17 +2249,17 @@
     "featureCliSupportDesc": "Fonctionne avec Claude Code, Codex, Cline, Cursor et plus encore.",
     "featureDashboardTitle": "Tableau de bord",
     "featureDashboardDesc": "Tableau de bord visuel pour une analyse du trafic en temps réel.",
-    "howItWorks": "Comment fonctionne OmniRoute",
+    "howItWorks": "Comment fonctionne Zed API",
     "howItWorksDescription": "Les données circulent de manière transparente depuis votre application via notre couche de routage intelligente jusqu'au meilleur fournisseur pour le travail.",
     "howItWorksStep1Title": "1. CLI et SDK",
     "howItWorksStep1Description": "Vos demandes partent de vos outils préférés ou de notre SDK unifié. Changez simplement l'URL de base.",
-    "howItWorksStep2Title": "2. Centre OmniRoute",
+    "howItWorksStep2Title": "2. Centre Zed API",
     "howItWorksStep2Description": "Notre moteur analyse l'invite, vérifie l'état du fournisseur et trace les itinéraires pour obtenir la latence ou le coût le plus faible.",
     "howItWorksStep3Title": "3. Fournisseurs d'IA",
     "howItWorksStep3Description": "La demande est satisfaite instantanément par OpenAI, Anthropic, Gemini ou autres.",
     "getStartedIn30Seconds": "Commencez en 30 secondes",
-    "getStartedDescription": "Installez OmniRoute, configurez vos fournisseurs via le tableau de bord Web et commencez à acheminer les demandes d'IA.",
-    "installOmniRoute": "Installer OmniRoute",
+    "getStartedDescription": "Installez Zed API, configurez vos fournisseurs via le tableau de bord Web et commencez à acheminer les demandes d'IA.",
+    "installZed API": "Installer Zed API",
     "installStepDescription": "Exécutez la commande npx pour démarrer le serveur instantanément",
     "openDashboard": "Ouvrir le tableau de bord",
     "openDashboardStepDescription": "Configurer les fournisseurs et les clés API via l'interface Web",
@@ -2200,7 +2268,7 @@
     "terminal": "borne",
     "copy": "Copier",
     "copied": "✓ Copié",
-    "startingOmniRoute": "Démarrage d'OmniRoute...",
+    "startingZed API": "Démarrage d'Zed API...",
     "serverRunningOnLabel": "Serveur fonctionnant sur",
     "dashboardLabel": "Tableau de bord",
     "readyToRoute": "Prêt à rouler ! ✓",
@@ -2217,7 +2285,7 @@
     "legal": "Juridique",
     "mitLicense": "Licence MIT",
     "footerTagline": "Le point de terminaison unifié pour la génération d’IA. Connectez, acheminez et gérez vos fournisseurs d'IA en toute simplicité.",
-    "copyright": "© {year} OmniRoute. Tous droits réservés.",
+    "copyright": "© {year} Zed API. Tous droits réservés.",
     "flowToolClaudeCode": "Claude Code",
     "flowToolOpenAICodex": "Codex OpenAI",
     "flowToolCline": "Clin",
@@ -2228,7 +2296,7 @@
     "flowProviderGithubCopilot": "Copilote GitHub",
     "interactiveDiagram": "Diagramme interactif visible sur le bureau",
     "ctaTitle": "Prêt à simplifier votre infrastructure d'IA ?",
-    "ctaDescription": "Rejoignez les développeurs qui rationalisent leurs intégrations d'IA avec OmniRoute. Open source et démarrage gratuit.",
+    "ctaDescription": "Rejoignez les développeurs qui rationalisent leurs intégrations d'IA avec Zed API. Open source et démarrage gratuit.",
     "startFree": "Commencez gratuitement",
     "readDocumentation": "Lire la documentation"
   },
@@ -2314,9 +2382,9 @@
     "clientClaudeBullet1Middle": "(Claude) ou",
     "clientClaudeBullet1Suffix": "Préfixe (Antigravité).",
     "protocolsTitle": "Protocoles : MCP et A2A",
-    "protocolsDescription": "OmniRoute expose deux protocoles opérationnels en plus des API compatibles OpenAI : MCP pour l'exécution des outils et A2A pour les flux de travail d'agent à agent.",
+    "protocolsDescription": "Zed API expose deux protocoles opérationnels en plus des API compatibles OpenAI : MCP pour l'exécution des outils et A2A pour les flux de travail d'agent à agent.",
     "protocolMcpTitle": "MCP (protocole de contexte de modèle)",
-    "protocolMcpDesc": "Utilisez MCP sur stdio pour permettre aux clients de découvrir et d'appeler les outils OmniRoute avec une visibilité d'audit.",
+    "protocolMcpDesc": "Utilisez MCP sur stdio pour permettre aux clients de découvrir et d'appeler les outils Zed API avec une visibilité d'audit.",
     "protocolMcpStep1": "Démarrez le transport MCP avec `omniroute --mcp`.",
     "protocolMcpStep2": "Pointez votre client MCP vers le transport stdio.",
     "protocolMcpStep3": "Appelez `omniroute_get_health` et `omniroute_list_combos` pour valider la connectivité.",
@@ -2359,10 +2427,10 @@
     "clearHistory": "Effacer l'historique d'utilisation à tout moment",
     "configureRetention": "Configurer les politiques de conservation des journaux",
     "backupRestore": "Sauvegardez et restaurez votre base de données",
-    "privacyMetadataTitle": "Politique de confidentialité | OmniRoute",
-    "privacyMetadataDescription": "Politique de confidentialité pour le routeur proxy OmniRoute AI API.",
-    "termsMetadataTitle": "Conditions d'utilisation | OmniRoute",
-    "termsMetadataDescription": "Conditions d'utilisation du routeur proxy de l'API OmniRoute AI.",
+    "privacyMetadataTitle": "Politique de confidentialité | Zed API",
+    "privacyMetadataDescription": "Politique de confidentialité pour le routeur proxy Zed API AI API.",
+    "termsMetadataTitle": "Conditions d'utilisation | Zed API",
+    "termsMetadataDescription": "Conditions d'utilisation du routeur proxy de l'API Zed API AI.",
     "backToHome": "Retour à la maison",
     "lastUpdated": "Dernière mise à jour : {date}",
     "policyLastUpdatedDate": "13 février 2026",
@@ -2370,7 +2438,7 @@
     "questionsVisit": "Des questions ? Visitez notre",
     "githubRepository": "Dépôt GitHub",
     "privacySection1Title": "1. Architecture locale d’abord",
-    "privacySection1Text": "OmniRoute est conçu comme une application locale. Tout le traitement et le stockage des données s'effectuent entièrement sur votre machine. Il n'y a pas de serveur centralisé collectant vos informations.",
+    "privacySection1Text": "Zed API est conçu comme une application locale. Tout le traitement et le stockage des données s'effectuent entièrement sur votre machine. Il n'y a pas de serveur centralisé collectant vos informations.",
     "privacySection2Title": "2. Données que nous stockons",
     "privacyDataStoredIn": "Les données suivantes sont stockées localement dans",
     "privacyDataProviderConfigurationsDesc": "URL de connexion, types de fournisseurs et paramètres de priorité",
@@ -2378,9 +2446,9 @@
     "privacyDataUsageLogsDesc": "nombre de requêtes, utilisation des jetons, noms de modèles, horodatages et temps de réponse",
     "privacyDataApplicationSettingsDesc": "préférences de thème, stratégie de routage et configurations combo",
     "privacySection3Title": "3. Pas de télémétrie",
-    "privacySection3Text": "OmniRoute ne collecte pas de rapports de télémétrie, d'analyse ou d'erreur. Aucune donnée n'est envoyée à nous ou à un tiers. Vos modèles d'utilisation, appels API et configurations restent entièrement privés.",
+    "privacySection3Text": "Zed API ne collecte pas de rapports de télémétrie, d'analyse ou d'erreur. Aucune donnée n'est envoyée à nous ou à un tiers. Vos modèles d'utilisation, appels API et configurations restent entièrement privés.",
     "privacySection4Title": "4. Fournisseurs d'IA tiers",
-    "privacySection4Text": "Lorsque vous effectuez des appels API via OmniRoute, vos requêtes sont transmises aux fournisseurs d'IA que vous avez configurés (par exemple : OpenAI, Anthropic, Google). Ces fournisseurs ont leurs propres politiques de confidentialité qui régissent la manière dont ils traitent vos données. Veuillez consulter :",
+    "privacySection4Text": "Lorsque vous effectuez des appels API via Zed API, vos requêtes sont transmises aux fournisseurs d'IA que vous avez configurés (par exemple : OpenAI, Anthropic, Google). Ces fournisseurs ont leurs propres politiques de confidentialité qui régissent la manière dont ils traitent vos données. Veuillez consulter :",
     "privacyOpenAiPolicy": "Politique de confidentialité d'OpenAI",
     "privacyAnthropicPolicy": "Politique de confidentialité anthropique",
     "privacyGooglePolicy": "Politique de confidentialité de Google",
@@ -2392,21 +2460,21 @@
     "privacySection7TextStart": "Puisque toutes les données sont stockées localement, vous avez le contrôle total. Vous pouvez supprimer vos données à tout moment en supprimant le",
     "privacySection7TextEnd": "répertoire ou en utilisant les fonctionnalités de sauvegarde et de restauration de la base de données dans le tableau de bord.",
     "termsSection1Title": "1. Aperçu",
-    "termsSection1Text": "OmniRoute est un premier routeur proxy API AI local qui fonctionne entièrement sur votre machine. Il achemine les requêtes vers plusieurs fournisseurs d'IA avec équilibrage de charge, basculement et suivi de l'utilisation.",
+    "termsSection1Text": "Zed API est un premier routeur proxy API AI local qui fonctionne entièrement sur votre machine. Il achemine les requêtes vers plusieurs fournisseurs d'IA avec équilibrage de charge, basculement et suivi de l'utilisation.",
     "termsSection2Title": "2. Responsabilités de l'utilisateur",
     "termsResponsibilityApiKeys": "Vous êtes seul responsable de la gestion de vos propres clés API et informations d'identification pour les fournisseurs d'IA tiers (OpenAI, Anthropic, Google, etc.).",
-    "termsResponsibilityCompliance": "Vous devez respecter les conditions de service de chaque fournisseur d'IA dont vous accédez à l'API via OmniRoute.",
-    "termsResponsibilitySecurity": "Vous êtes responsable de la sécurité de votre installation OmniRoute locale, notamment en définissant un mot de passe et en restreignant l'accès au réseau.",
+    "termsResponsibilityCompliance": "Vous devez respecter les conditions de service de chaque fournisseur d'IA dont vous accédez à l'API via Zed API.",
+    "termsResponsibilitySecurity": "Vous êtes responsable de la sécurité de votre installation Zed API locale, notamment en définissant un mot de passe et en restreignant l'accès au réseau.",
     "termsSection3Title": "3. Comment ça marche",
-    "termsSection3Text": "OmniRoute agit en tant que proxy intermédiaire. Les appels API envoyés à OmniRoute sont traduits et transmis à vos fournisseurs d'IA configurés. OmniRoute ne modifie pas le contenu de vos demandes ou réponses au-delà de la traduction du protocole nécessaire.",
+    "termsSection3Text": "Zed API agit en tant que proxy intermédiaire. Les appels API envoyés à Zed API sont traduits et transmis à vos fournisseurs d'IA configurés. Zed API ne modifie pas le contenu de vos demandes ou réponses au-delà de la traduction du protocole nécessaire.",
     "termsSection4Title": "4. Traitement des données",
     "termsDataStoredLocally": "Toutes les données sont stockées localement sur votre machine dans une base de données SQLite.",
-    "termsNoTransmission": "OmniRoute ne transmet aucune donnée aux serveurs externes, sauf si vous activez explicitement les fonctionnalités de synchronisation dans le cloud.",
+    "termsNoTransmission": "Zed API ne transmet aucune donnée aux serveurs externes, sauf si vous activez explicitement les fonctionnalités de synchronisation dans le cloud.",
     "termsDataLocationText": "Les journaux d'utilisation, les clés API et la configuration sont stockés dans",
     "termsSection5Title": "5. Avis de non-responsabilité",
-    "termsSection5Text": "OmniRoute est fourni « tel quel », sans garantie d'aucune sorte. Nous ne sommes pas responsables des coûts occasionnés par l'utilisation de l'API, les interruptions de service ou la perte de données. Conservez toujours des sauvegardes de votre configuration.",
+    "termsSection5Text": "Zed API est fourni « tel quel », sans garantie d'aucune sorte. Nous ne sommes pas responsables des coûts occasionnés par l'utilisation de l'API, les interruptions de service ou la perte de données. Conservez toujours des sauvegardes de votre configuration.",
     "termsSection6Title": "6. Ouvrir la source",
-    "termsSection6Text": "OmniRoute est un logiciel open source. Vous êtes libre de l'inspecter, de le modifier et de le distribuer selon les termes de sa licence."
+    "termsSection6Text": "Zed API est un logiciel open source. Vous êtes libre de l'inspecter, de le modifier et de le distribuer selon les termes de sa licence."
   },
   "endpoints": {
     "tabProxy": "Endpoint Proxy",
@@ -2419,5 +2487,45 @@
     "featureWebhooks": "Configuration de webhooks et abonnements aux événements",
     "featureSwagger": "Génération automatique de spécifications OpenAPI / Swagger",
     "featureAuth": "Gestion des clés API et des portées OAuth par point d'accès"
+  },
+  "agents": {
+    "title": "CLI Agents",
+    "description": "Discover installed CLI agents on your system. Add custom agents for auto-detection.",
+    "refresh": "Refresh",
+    "installed": "Installed",
+    "notFound": "Not Found",
+    "builtIn": "Built-in",
+    "custom": "Custom",
+    "remove": "Remove",
+    "addCustomAgent": "Add Custom Agent",
+    "addCustomAgentDesc": "Register any CLI tool for detection. It will be scanned automatically on refresh.",
+    "agentName": "Agent Name",
+    "binaryName": "Binary Name",
+    "versionCommand": "Version Command",
+    "spawnArgs": "Spawn Args",
+    "addAgent": "Add Agent"
+  },
+  "autoCombo": {
+    "title": "Auto-Combo Engine",
+    "statusNormal": "Normal",
+    "statusIncident": "Incident Mode",
+    "modePack": "Mode Pack",
+    "providerScores": "Provider Scores",
+    "noAutoCombo": "No auto-combo configured.",
+    "excludedProviders": "Excluded Providers",
+    "noExclusions": "No providers currently excluded.",
+    "factorQuota": "Quota",
+    "factorHealth": "Health",
+    "factorCost": "Cost",
+    "factorLatency": "Latency",
+    "factorTaskFit": "Task Fit",
+    "factorStability": "Stability",
+    "factorTierPriority": "Tier Priority",
+    "factorTierPriorityDesc": "Prefers accounts with higher quota tiers (Ultra/Pro over Free)",
+    "scoreFactorBreakdown": "Scoring Factors",
+    "modePackShipFast": "Ship Fast",
+    "modePackCostSaver": "Cost Saver",
+    "modePackQualityFirst": "Quality First",
+    "modePackOfflineFriendly": "Offline Friendly"
   }
 }

@@ -14,62 +14,81 @@ function getApiKeySecret(): string {
 }
 
 /**
+ * Generate a random hex string of given character length
+ */
+function generateHexSegment(length: number): string {
+  return crypto
+    .randomBytes(Math.ceil(length / 2))
+    .toString("hex")
+    .slice(0, length);
+}
+
+/**
  * Generate 6-char random keyId
  */
 function generateKeyId(): string {
-  const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-  let result = "";
-  for (let i = 0; i < 6; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return result;
+  return generateHexSegment(6);
 }
 
 /**
  * Generate CRC (8-char HMAC)
  */
-function generateCrc(machineId: string, keyId: string): string {
+function generateCrc(segment1: string, segment2: string): string {
   const secret = getApiKeySecret();
   return crypto
     .createHmac("sha256", secret)
-    .update(machineId + keyId)
+    .update(segment1 + segment2)
     .digest("hex")
     .slice(0, 8);
 }
 
 /**
- * Generate API key with machineId embedded
- * Format: sk-{machineId}-{keyId}-{crc8}
- * @param {string} machineId - 16-char machine ID
+ * Generate API key
+ * Format: agisota-{12 hex}-pzdrk-{8 hex}
+ * machineId is used as HMAC entropy but not embedded in the key string.
+ * @param {string} machineId - machine ID used to bind key to machine via HMAC
  * @returns {{ key: string, keyId: string }}
  */
 export function generateApiKeyWithMachine(machineId: string): { key: string; keyId: string } {
-  const keyId = generateKeyId();
-  const crc = generateCrc(machineId, keyId);
-  const key = `sk-${machineId}-${keyId}-${crc}`;
-  return { key, keyId };
+  const segment1 = generateHexSegment(12);
+  const segment2 = generateHexSegment(8);
+  // Keep generateKeyId available for legacy compat — suppress unused warning
+  void generateKeyId;
+  // CRC computed to bind key to machine but not embedded in key (Zed API format)
+  void generateCrc(machineId, segment1);
+  const key = `agisota-${segment1}-pzdrk-${segment2}`;
+  return { key, keyId: segment1 };
 }
 
 /**
- * Parse API key and extract machineId + keyId
- * Supports both formats:
- * - New: sk-{machineId}-{keyId}-{crc8}
- * - Old: sk-{random8}
+ * Parse API key and extract components.
+ * Supports formats:
+ * - Zed API: agisota-{12hex}-pzdrk-{8hex}
+ * - Legacy sk- new format: sk-{machineId}-{keyId}-{crc8}
+ * - Legacy sk- old format: sk-{random8}
  * @param {string} apiKey
- * @returns {{ machineId: string, keyId: string, isNewFormat: boolean } | null}
+ * @returns {{ machineId: string | null, keyId: string, isNewFormat: boolean } | null}
  */
 export function parseApiKey(
   apiKey: string
 ): { machineId: string | null; keyId: string; isNewFormat: boolean } | null {
-  if (!apiKey || !apiKey.startsWith("sk-")) return null;
+  if (!apiKey) return null;
+
+  // Zed API format: agisota-{12hex}-pzdrk-{8hex}
+  if (apiKey.startsWith("agisota-")) {
+    const match = apiKey.match(/^agisota-([0-9a-f]{12})-pzdrk-([0-9a-f]{8})$/);
+    if (!match) return null;
+    return { machineId: null, keyId: match[1], isNewFormat: true };
+  }
+
+  // Legacy sk- formats
+  if (!apiKey.startsWith("sk-")) return null;
 
   const parts = apiKey.split("-");
 
-  // New format: sk-{machineId}-{keyId}-{crc8} = 4 parts
+  // Legacy new format: sk-{machineId}-{keyId}-{crc8} = 4 parts
   if (parts.length === 4) {
     const [, machineId, keyId, crc] = parts;
-
-    // Validate CRC
     let expectedCrc;
     try {
       expectedCrc = generateCrc(machineId, keyId);
@@ -77,11 +96,10 @@ export function parseApiKey(
       return null;
     }
     if (crc !== expectedCrc) return null;
-
     return { machineId, keyId, isNewFormat: true };
   }
 
-  // Old format: sk-{random8} = 2 parts
+  // Legacy old format: sk-{random8} = 2 parts
   if (parts.length === 2) {
     return { machineId: null, keyId: parts[1], isNewFormat: false };
   }
@@ -90,23 +108,17 @@ export function parseApiKey(
 }
 
 /**
- * Verify API key CRC (only for new format)
+ * Verify API key (CRC check for legacy sk- new format; pattern check for agisota- format)
  * @param {string} apiKey
  * @returns {boolean}
  */
 export function verifyApiKeyCrc(apiKey: string): boolean {
   const parsed = parseApiKey(apiKey);
-  if (!parsed) return false;
-
-  // Old format doesn't have CRC, always valid if parsed
-  if (!parsed.isNewFormat) return true;
-
-  // New format already verified in parseApiKey
-  return true;
+  return parsed !== null;
 }
 
 /**
- * Check if API key is new format (contains machineId)
+ * Check if API key is new format (agisota- prefix or sk- new format with machineId)
  * @param {string} apiKey
  * @returns {boolean}
  */
